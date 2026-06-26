@@ -1,0 +1,16 @@
+@if(!isLoading){
+<p>Loading..</p>
+} @else {
+<ul>
+    @for(product of products; track product.id){
+    <li>
+        {{product.title}}
+    </li>
+    } @empty {
+
+    <li>
+        <p>No Products found</p>
+    </li>
+    }
+</ul>
+}
