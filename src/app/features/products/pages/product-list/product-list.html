@@ -1,16 +1,16 @@
 @if(!isLoading){
-<p>Loading..</p>
+<div class="loading-state">
+    <div class="spinner"></div>
+    <p>Loading products...</p>
+</div>
 } @else {
-<ul>
+<div class="product-grid">
     @for(product of products; track product.id){
-    <li>
-        {{product.title}}
-    </li>
+    <app-product-card [product]="product"></app-product-card>
     } @empty {
-
-    <li>
-        <p>No Products found</p>
-    </li>
+    <div class="empty-state">
+        <p>No products found</p>
+    </div>
     }
-</ul>
+</div>
 }

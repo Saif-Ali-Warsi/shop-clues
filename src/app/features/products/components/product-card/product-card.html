@@ -1,0 +1,18 @@
+<div class="product-card" [routerLink]="['/products', product().id]">
+    <div class="image-container">
+        <img [src]="product().thumbnail" [alt]="product().title">
+        <span class="category-badge">{{product().category}}</span>
+    </div>
+    <div class="product-info">
+        <h3 class="product-title">{{product().title}}</h3>
+        <div class="product-footer">
+            <span class="product-price">${{product().price}}</span>
+            <button class="action-button">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" class="icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
