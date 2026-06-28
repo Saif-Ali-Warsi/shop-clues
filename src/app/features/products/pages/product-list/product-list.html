@@ -4,8 +4,9 @@
     <p>Loading products...</p>
 </div>
 } @else {
+<app-search (searchResult)="onSearch($event)"></app-search>
 <div class="product-grid">
-    @for(product of products; track product.id){
+    @for(product of products(); track product.id){
     <app-product-card [product]="product"></app-product-card>
     } @empty {
     <div class="empty-state">

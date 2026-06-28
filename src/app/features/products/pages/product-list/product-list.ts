@@ -1,11 +1,13 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal, Signal } from '@angular/core';
 import { Product } from '../../models/product.model';
 import { ProductService } from '../../services/product-service';
 import { ProductCard } from '../../components/product-card/product-card';
+import { Search } from '../../components/search/search';
+
 
 @Component({
   selector: 'app-product-list',
-  imports: [ProductCard],
+  imports: [ProductCard, Search],
   templateUrl: './product-list.html',
   styleUrl: './product-list.scss',
 })
@@ -13,7 +15,7 @@ export class ProductList implements OnInit {
 
   private productService = inject(ProductService);
 
-  products: Product[] = [];
+  products = signal<Product[]>([]);
   isLoading = false;
 
   ngOnInit() {
@@ -23,7 +25,7 @@ export class ProductList implements OnInit {
   loadProducts() {
     this.productService.getProducts().subscribe({
       next: (response) => {
-        this.products = response.products;
+        this.products.set(response.products)
         this.isLoading = true;
       },
 
@@ -31,6 +33,10 @@ export class ProductList implements OnInit {
 
       }
     });
+  }
+
+  onSearch(products: Product[]) {
+    this.products.set(products)
   }
 }
 

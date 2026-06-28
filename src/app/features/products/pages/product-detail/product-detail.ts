@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { Product } from '../../models/product.model';
 import { ProductService } from '../../services/product-service';
 import { switchMap } from 'rxjs';
@@ -17,7 +17,7 @@ export class ProductDetail implements OnInit {
   private route = inject(ActivatedRoute)
   private productService = inject(ProductService)
 
-  product: Product | undefined;
+  product = signal<Product | undefined>(undefined);
 
   ngOnInit() {
     this.loadProduct()
@@ -31,7 +31,7 @@ export class ProductDetail implements OnInit {
       })
     ).subscribe({
       next: (product) => {
-        this.product = product;
+        this.product.set(product)
       },
       error: (error) => {
 

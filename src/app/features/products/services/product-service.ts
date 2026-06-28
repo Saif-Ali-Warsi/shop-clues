@@ -23,4 +23,8 @@ export class ProductService {
     return this.http.get<Product>(`${this.baseUrl}/products/${id}`)
   }
 
+  searchProducts(query: string): Observable<ProductResponse> {
+    return this.http.get<ProductResponse>(`${this.baseUrl}/products/search?q=${query}`)
+  }
+
 }
