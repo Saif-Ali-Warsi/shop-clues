@@ -4,7 +4,10 @@
     <p>Loading products...</p>
 </div>
 } @else {
-<app-search (searchResult)="onSearch($event)"></app-search>
+<div class="form-field d-flex gap-15">
+    <app-search (searchResult)="onSearch($event)"></app-search>
+    <app-category-filter (selectedCategory)="onCategoryChange($event)"></app-category-filter>
+</div>
 <div class="product-grid">
     @for(product of products(); track product.id){
     <app-product-card [product]="product"></app-product-card>

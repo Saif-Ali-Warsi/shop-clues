@@ -1,0 +1,8 @@
+<select (change)="onCategoryChange($event)">
+    <option value="">All Categories</option>
+
+    @for(category of categories(); track category.slug){
+    <option [value]="category.slug">
+        {{category.name}}
+    </option> }
+</select>
