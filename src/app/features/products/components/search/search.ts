@@ -12,7 +12,7 @@ import { Product } from '../../models/product.model';
 })
 export class Search implements OnInit {
 
-  searchResult = output<Product[]>();
+  searchChanged = output<string>();
 
   productService = inject(ProductService);
   searchControl = new FormControl('', { nonNullable: true });
@@ -25,22 +25,10 @@ export class Search implements OnInit {
   listenSearch() {
     this.searchControl.valueChanges.pipe(
       debounceTime(500),
-      distinctUntilChanged(),
-      switchMap(value => {
-        if (!value.trim()) {
-          return this.productService.getProducts()
-        }
-        return this.productService.searchProducts(value);
-      }
-      )
-    ).subscribe({
-      next: (response) => {
-        this.searchResult.emit(response.products)
-      },
+      distinctUntilChanged()
 
-      error: (err) => {
-
-      }
+    ).subscribe(query => {
+      this.searchChanged.emit(query.trim())
 
     }
     )

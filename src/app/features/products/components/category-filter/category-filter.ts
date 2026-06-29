@@ -4,7 +4,6 @@ import { ProductService } from '../../services/product-service';
 import { Product } from '../../models/product.model';
 
 
-
 @Component({
   selector: 'app-category-filter',
   imports: [],
@@ -17,7 +16,7 @@ export class CategoryFilter implements OnInit {
 
   categories = signal<Category[]>([]);
 
-  selectedCategory = output<Product[]>();
+  categoryChanged = output<string>();
 
   ngOnInit() {
     this.loadCategories()
@@ -33,18 +32,8 @@ export class CategoryFilter implements OnInit {
 
   onCategoryChange(event: Event) {
     const select = event.target as HTMLSelectElement;
-    const category = select.value;
+    this.categoryChanged.emit(select.value);
 
-    if (!category) {
-      this.productService.getProducts().subscribe((response) => {
-        this.selectedCategory.emit(response.products)
-      })
-      return;
-    }
-
-    this.productService.getProductsByCategory(category).subscribe((response) => {
-      this.selectedCategory.emit(response.products)
-    })
   }
 
 }

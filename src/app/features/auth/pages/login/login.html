@@ -1,0 +1,17 @@
+<div class="common-wrapper wrapper">
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-field">
+            <input type="text" formControlName="username" placeholder="Username" />
+        </div>
+        <div class="form-field">
+            <input type="password" formControlName="password" placeholder="Password" />
+        </div>
+
+
+        <div class="form-field">
+            <button type="submit">Login</button>
+        </div>
+    </form>
+
+</div>

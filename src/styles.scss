@@ -5,16 +5,33 @@ $white-color: #ffffff;
 $error-color: #ff8b8b;
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-style: normal;
   letter-spacing: 0.3px;
   box-sizing: border-box;
   color: $white-color;
   background-color: $dark-theme-color;
+margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 .wrapper {
   max-width: 500px;
+}
+
+.common-wrapper {
+  padding: 15px 20px;
 }
 
 input {
@@ -147,4 +164,15 @@ a {
 
 .danger {
   color: $error-color;
+}
+
+main {
+  padding-bottom: 220px; 
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding-bottom: 0;
+  }
 }

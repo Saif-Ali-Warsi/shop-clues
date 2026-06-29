@@ -1,0 +1,10 @@
+<nav>
+
+    <a routerLink="/">Logo</a>
+
+    @for(item of navItems; track item.path){
+    <a [routerLink]="item.path">
+        {{item.label}}
+    </a>
+    }
+</nav>

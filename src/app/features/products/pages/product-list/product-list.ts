@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal, Signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { Product } from '../../models/product.model';
 import { ProductService } from '../../services/product-service';
 import { ProductCard } from '../../components/product-card/product-card';
@@ -15,32 +15,69 @@ export class ProductList implements OnInit {
 
   private productService = inject(ProductService);
 
-  products = signal<Product[]>([]);
   isLoading = false;
+  products = signal<Product[]>([]);
+  searchTerm = signal('');
+  selectedCategory = signal('');
 
   ngOnInit() {
     this.loadProducts();
   }
 
   loadProducts() {
-    this.productService.getProducts().subscribe({
-      next: (response) => {
-        this.products.set(response.products)
-        this.isLoading = true;
-      },
+    this.isLoading = true;
+    const search = this.searchTerm()
+    const category = this.selectedCategory()
 
-      error: (error) => {
+    if (!search && !category) {
+      this.productService.getProducts().subscribe({
+        next: (response) => {
+          this.products.set(response.products);
+        }
+      })
 
-      }
-    });
+      return;
+    }
+
+    if (search && !category) {
+      this.productService.searchProducts(search).subscribe({
+        next: (response) => {
+          this.products.set(response.products)
+        }
+      })
+      return;
+    }
+
+    if (!search && category) {
+      this.productService.getProductsByCategory(category).subscribe({
+        next: (response) => {
+          this.products.set(response.products)
+        }
+      })
+    }
+
+    if (search && category) {
+      this.productService.searchProducts(search).subscribe({
+        next: (response) => {
+          const filterredProduct = response.products.filter(
+            product => product.category === category
+          )
+
+          this.products.set(filterredProduct)
+        }
+      });
+      return;
+    }
   }
 
-  onSearch(products: Product[]) {
-    this.products.set(products)
+  onSearch(query: string) {
+    this.searchTerm.set(query)
+    this.loadProducts();
   }
 
-  onCategoryChange(products: Product[]) {
-    this.products.set(products)
+  onCategoryChange(category: string) {
+    this.selectedCategory.set(category)
+    this.loadProducts();
   }
 }
 
