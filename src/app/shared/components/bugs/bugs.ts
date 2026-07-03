@@ -47,6 +47,10 @@ tasks: TaskItem[] = [
       description: 'Category side bar feature needed with working filters'
     },
     {
+      title: 'Notifications service',
+      description: 'Notifications service error, success order, etc.'
+    },
+    {
       title: '"About Us" Section',
       description: 'Create a dedicated section or page detailing the brand/company story.'
     },
