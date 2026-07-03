@@ -1,0 +1,66 @@
+@if(cartItem().length > 0){
+<div class="cart-layout-wrapper">
+
+  <!-- Left Side: Cart Items List -->
+  <div class="cart-container">
+    @for(item of cartItem(); track item.id){
+    <div class="cart-item">
+      <img [src]="item.thumbnail" [alt]="item.title" class="cart-item-img">
+
+      <div class="cart-item-details">
+        <h3>{{ item.title }}</h3>
+        <p class="price">Price: ${{ item.price }}</p>
+        <p class="quantity">Quantity: {{ item.quantity }}</p>
+      </div>
+
+      <div class="cart-item-actions">
+        <div class="qty-controls">
+          <button class="btn-qty" (click)="decreaseQuantity(item.id)">-</button>
+          <button class="btn-qty" (click)="increaseQuantity(item.id)">+</button>
+        </div>
+        <button class="btn-remove" (click)="removeItem(item.id)">Remove</button>
+      </div>
+    </div>
+    }
+  </div>
+
+  <!-- Right Side: Cart Summary Panel -->
+  <div class="cart-summary-panel">
+    <h2>Cart Summary</h2>
+
+    <div class="summary-row">
+      <span>Total Quantity</span>
+      <span>{{cartCount()}}</span>
+    </div>
+
+    <div class="summary-row">
+      <span>Total Price</span>
+      <span>{{cartTotal()}}</span>
+    </div>
+
+    <div class="summary-row">
+      <span>Total Discount</span>
+      <span class="discount-text">-45</span>
+    </div>
+
+    <div class="summary-row">
+      <span>Total Tax</span>
+      <span>3545</span>
+    </div>
+
+    <hr class="summary-divider">
+
+    <div class="summary-row total-row">
+      <span>Estimated Total</span>
+      <span>{{cartTotal()}}</span>
+    </div>
+
+    <button class="btn-checkout">Proceed to Checkout</button>
+  </div>
+
+</div>
+} @else {
+<div class="empty-cart">
+  <p>Your cart is empty</p>
+</div>
+}

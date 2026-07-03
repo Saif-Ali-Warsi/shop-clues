@@ -1,0 +1,10 @@
+<!-- task-list.component.html -->
+<ul class="task-list">
+  @for (task of tasks; track task.title) {
+    <li class="task-item">
+      <div class="task-content">
+        <strong>{{ task.title }}:</strong> {{ task.description }}
+      </div>
+    </li>
+  }
+</ul>
