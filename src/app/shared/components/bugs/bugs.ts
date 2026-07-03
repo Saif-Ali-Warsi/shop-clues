@@ -39,6 +39,14 @@ tasks: TaskItem[] = [
       description: 'Design and build a comprehensive, engaging homepage.'
     },
     {
+      title: 'Sorting',
+      description: 'Sorting feature needed for listings'
+    },
+    {
+      title: 'Category side feature',
+      description: 'Category side bar feature needed with working filters'
+    },
+    {
       title: '"About Us" Section',
       description: 'Create a dedicated section or page detailing the brand/company story.'
     },

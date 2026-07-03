@@ -8,31 +8,37 @@ export const routes: Routes = [
 
     {
         path: '',
-        component: ProductList
+        component: ProductList,
+        title: 'Products'
     },
     {
         path: 'products/:id',
-        component: ProductDetail
+        component: ProductDetail,
+        title: 'Products'
     },
     {
         path: 'login',
         loadComponent: () => import('./features/auth/pages/login/login')
-            .then(c => c.Login)
+            .then(c => c.Login),
+        title: 'Login'
     },
     {
         path: 'profile',
         loadComponent: () => import('./features/profile/pages/profile/profile')
             .then(c => c.Profile),
-        canActivate: [authGuard]
+        canActivate: [authGuard],
+        title: 'Profile'
     },
     {
         path: 'cart',
-        loadComponent: () => import('./features/cart/pages/cart/cart').then(c => c.Cart)
+        loadComponent: () => import('./features/cart/pages/cart/cart').then(c => c.Cart),
+        title: 'Cart'
     },
     {
         path: 'bugs',
         component: Bugs,
-        canActivate: [authGuard]
+        canActivate: [authGuard],
+        title: 'Bugs'
     }
 
 ];
