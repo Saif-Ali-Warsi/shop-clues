@@ -1,20 +1,38 @@
-<nav>
+<header class="main-header">
+  <div class="top-nav">
+    <div class="logo-section">
+      <a routerLink="/" class="logo">Logo</a>
+    </div>
 
-  <a routerLink="/">Logo</a>
+    <div class="search-section">
+      <div class="search-container">
+        <input type="text" placeholder="Try Saree, Kurti or Search by Product Code" />
+      </div>
+    </div>
 
-  @if (!authService.isLoggedIn()) {
+    <div class="nav-links">
+      @if (!authService.isLoggedIn()) {
+        <a routerLink="/products" class="nav-item">Products</a>
+        <a routerLink="/login" class="nav-item">Login</a>
+      } @else {
+        <a routerLink="/profile" class="nav-item">Profile</a>
+        <a routerLink="/cart" class="nav-item">
+          <span>Cart</span>
+          <span class="badge">{{cartCount()}}</span>
+        </a>
+        <a (click)="logout()" class="nav-item logout-btn">Logout</a>
+      }
+    </div>
+  </div>
 
-  <a routerLink="/products"> Products </a>
-  <a routerLink="/login"> Login </a>
-
-  } @else {
-  <a routerLink="/profile">Profile</a>
-  <a routerLink="/cart">Cart {{cartCount()}}</a>
-
-  <a (click)="logout()">
-    Logout
-  </a>
-
-  }
-
-</nav>
+  <nav class="category-nav">
+    <ul class="category-list">
+      {{ categories.length }}
+      @for(item of categories; track item.slug){
+        <li class="category-item">
+          {{item.name}}
+        </li>
+      }
+    </ul>
+  </nav>
+</header>
