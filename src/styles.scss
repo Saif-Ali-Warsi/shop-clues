@@ -24,6 +24,8 @@ app-root {
 
 main {
   flex: 1 0 auto;
+  // padding-bottom: 220px;
+  box-sizing: border-box;
 }
 
 .wrapper {
@@ -164,10 +166,7 @@ a {
   color: $error-color;
 }
 
-main {
-  padding-bottom: 220px;
-  box-sizing: border-box;
-}
+
 
 @media (max-width: 768px) {
   main {

@@ -5,6 +5,7 @@ import { environment } from '../../../../environment/environment';
 import { LoginRequest } from '../models/login-request.model';
 import { LoginResponse } from '../models/login-response.model';
 import { Router } from '@angular/router';
+import { CartService } from '../../cart/services/cart-service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +16,7 @@ export class AuthService {
 
   private http = inject(HttpClient);
   private router = inject(Router);
+  private cartService = inject(CartService);
 
   login(request: LoginRequest): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(
@@ -24,8 +26,12 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('accessToken');
+    
+    localStorage.removeItem('user');
 
-    this.router.navigate(['/login'])
+    this.cartService.clearCart();
+
+    this.router.navigate(['/login']);
   }
 
   isLoggedIn() {

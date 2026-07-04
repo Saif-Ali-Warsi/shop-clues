@@ -6,32 +6,32 @@
 
     <div class="search-section">
       <div class="search-container">
-        <input type="text" placeholder="Try Saree, Kurti or Search by Product Code" />
+       <app-search (searchChanged)="onSearch($event)"></app-search>
       </div>
     </div>
 
     <div class="nav-links">
       @if (!authService.isLoggedIn()) {
-        <a routerLink="/products" class="nav-item">Products</a>
-        <a routerLink="/login" class="nav-item">Login</a>
+
+      <a routerLink="/login" class="nav-item">Login</a>
       } @else {
-        <a routerLink="/profile" class="nav-item">Profile</a>
-        <a routerLink="/cart" class="nav-item">
-          <span>Cart</span>
-          <span class="badge">{{cartCount()}}</span>
-        </a>
-        <a (click)="logout()" class="nav-item logout-btn">Logout</a>
+      <a routerLink="/cart" class="nav-item">
+        <span>Cart</span>
+        <span class="badge">{{cartCount()}}</span>
+      </a>
+      <a routerLink="/profile" class="nav-item">Profile</a>
+
+      <a (click)="logout()" class="nav-item logout-btn">Logout</a>
       }
     </div>
   </div>
 
   <nav class="category-nav">
     <ul class="category-list">
-      {{ categories.length }}
-      @for(item of categories; track item.slug){
-        <li class="category-item">
-          {{item.name}}
-        </li>
+      @for(category of categories; track category.slug){
+      <li class="category-item">
+        <a [routerLink]="['products']" [queryParams]="{category: category.slug}">{{category.name}}</a>
+      </li>
       }
     </ul>
   </nav>

@@ -119,4 +119,9 @@ export class CartService {
     }, 0)
   });
 
+  clearCart() {
+    localStorage.removeItem('cart');
+    this.cartItems.set([]);
+  }
+
 }

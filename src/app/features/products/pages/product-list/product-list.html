@@ -6,8 +6,8 @@
     </div>
     } @else {
     <div class="form-field d-flex gap-15">
-        <app-search (searchChanged)="onSearch($event)"></app-search>
-        <app-category-filter (categoryChanged)="onCategoryChange($event)"></app-category-filter>
+        <!-- <app-search (searchChanged)="onSearch($event)"></app-search> -->
+        <!-- <app-category-filter (categoryChanged)="onCategoryChange($event)"></app-category-filter> -->
     </div>
     <div class="product-grid">
         @for(product of products(); track product.id){

@@ -4,6 +4,7 @@ import { ProductService } from '../../services/product-service';
 import { ProductCard } from '../../components/product-card/product-card';
 import { Search } from '../../components/search/search';
 import { CategoryFilter } from '../../components/category-filter/category-filter';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -14,6 +15,7 @@ import { CategoryFilter } from '../../components/category-filter/category-filter
 export class ProductList implements OnInit {
 
   private productService = inject(ProductService);
+  private route = inject(ActivatedRoute);
 
   isLoading = false;
   products = signal<Product[]>([]);
@@ -21,7 +23,16 @@ export class ProductList implements OnInit {
   selectedCategory = signal('');
 
   ngOnInit() {
-    this.loadProducts();
+    this.route.queryParams.subscribe(params => {
+
+      const category = params['category'] ?? '';
+      const search = params['search'] ?? '';
+
+      this.selectedCategory.set(category);
+      this.searchTerm.set(search);
+      
+      this.loadProducts();
+    })
   }
 
   loadProducts() {
