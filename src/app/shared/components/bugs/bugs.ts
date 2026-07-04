@@ -15,10 +15,6 @@ interface TaskItem {
 export class Bugs {
 tasks: TaskItem[] = [
     {
-      title: 'Event Bubbling',
-      description: 'Product card on listing add button check.'
-    },
-    {
       title: 'Authentication Flow',
       description: 'Hide login/signup options for authenticated users.'
     },

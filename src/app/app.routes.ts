@@ -3,11 +3,17 @@ import { ProductList } from './features/products/pages/product-list/product-list
 import { ProductDetail } from './features/products/pages/product-detail/product-detail';
 import { authGuard } from './features/auth/guards/auth-guard';
 import { Bugs } from './shared/components/bugs/bugs';
+import { guestGuard } from './core/guards/guest-guard';
 
 export const routes: Routes = [
 
     {
         path: '',
+        component: ProductList,
+        title: 'Products'
+    },
+    {
+        path: 'products',
         component: ProductList,
         title: 'Products'
     },
@@ -20,6 +26,7 @@ export const routes: Routes = [
         path: 'login',
         loadComponent: () => import('./features/auth/pages/login/login')
             .then(c => c.Login),
+        canActivate: [guestGuard],
         title: 'Login'
     },
     {

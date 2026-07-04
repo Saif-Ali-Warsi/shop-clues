@@ -1,12 +1,20 @@
 <nav>
 
-    <a routerLink="/">Logo</a>
+  <a routerLink="/">Logo</a>
 
-    @for(item of navItems; track item.path){
-    <a [routerLink]="item.path">
-        {{item.label}}
-    </a>
-    }
+  @if (!authService.isLoggedIn()) {
 
-    <a routerLink="/cart">Cart {{cartCount()}}</a>
+  <a routerLink="/products"> Products </a>
+  <a routerLink="/login"> Login </a>
+
+  } @else {
+  <a routerLink="/profile">Profile</a>
+  <a routerLink="/cart">Cart {{cartCount()}}</a>
+
+  <a (click)="logout()">
+    Logout
+  </a>
+
+  }
+
 </nav>

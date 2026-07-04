@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CartService } from '../../../features/cart/services/cart-service';
+import { AuthService } from '../../../features/auth/services/auth-service';
 
 
 @Component({
@@ -12,39 +13,17 @@ import { CartService } from '../../../features/cart/services/cart-service';
 export class Navbar implements OnInit {
 
   private cartService = inject(CartService);
+  authService = inject(AuthService);
 
   cartCount = this.cartService.cartCount;
-
-  navItems = [
-    {
-      label: 'Products',
-      path: '/'
-    },
-    {
-      label: 'Login',
-      path: '/login'
-    },
-    {
-      label: 'Cart',
-      path: '/cart'
-    },
-    {
-      label: 'Profile',
-      path: '/profile'
-    },
-    {
-      label: 'bugs',
-      path: '/bugs'
-    }
-  ]
-
-
 
   ngOnInit(): void {
 
   }
 
-
+  logout() {
+    this.authService.logout()
+  }
 
 
 }
