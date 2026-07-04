@@ -28,4 +28,8 @@ export class AuthService {
     this.router.navigate(['/login'])
   }
 
+  isLoggedIn() {
+    return !!localStorage.getItem('accessToken')
+  }
+
 }
