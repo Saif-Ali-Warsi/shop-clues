@@ -57,10 +57,6 @@ tasks: TaskItem[] = [
     {
       title: '404 Not Found Page',
       description: 'Implement a user-friendly, branded custom 404 error page.'
-    },
-    {
-      title: 'Global Error Handling',
-      description: 'Build a robust system to gracefully catch and display runtime/API errors.'
     }
   ];
 }
