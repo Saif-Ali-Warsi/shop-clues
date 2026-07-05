@@ -6,7 +6,7 @@
 
     <div class="search-section">
       <div class="search-container">
-       <app-search (searchChanged)="onSearch($event)"></app-search>
+        <app-search [searchValue]="search" (searchChanged)="onSearch($event)"></app-search>
       </div>
     </div>
 

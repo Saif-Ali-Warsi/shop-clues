@@ -1,8 +1,6 @@
-import { Component, OnInit, inject, output } from '@angular/core';
+import { Component, OnInit, inject, output, input, effect } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
-import { ProductService } from '../../services/product-service';
-import { Product } from '../../models/product.model';
 
 @Component({
   selector: 'app-search',
@@ -13,9 +11,18 @@ import { Product } from '../../models/product.model';
 export class Search implements OnInit {
 
   searchChanged = output<string>();
+  searchValue = input('');
 
-  productService = inject(ProductService);
   searchControl = new FormControl('', { nonNullable: true });
+
+  constructor() {
+    effect(() => {
+      this.searchControl.setValue(
+        this.searchValue(),
+        { emitEvent: false }
+      )
+    })
+  }
 
 
   ngOnInit() {
@@ -29,7 +36,6 @@ export class Search implements OnInit {
 
     ).subscribe(query => {
       this.searchChanged.emit(query.trim())
-
     }
     )
   }

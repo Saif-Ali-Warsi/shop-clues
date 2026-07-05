@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CartService } from '../../../features/cart/services/cart-service';
 import { AuthService } from '../../../features/auth/services/auth-service';
 import { ProductService } from '../../../features/products/services/product-service';
@@ -18,12 +18,19 @@ export class Navbar implements OnInit {
   authService = inject(AuthService);
   private productService = inject(ProductService);
   private router = inject(Router);
+  private route = inject(ActivatedRoute);
 
   cartCount = this.cartService.cartCount;
   categories: Category[] = [];
 
+  search = '';
+
   ngOnInit(): void {
     this.loadCategories();
+
+    this.route.queryParams.subscribe(params => {
+      this.search = params['search'] ?? '';
+    })
   }
 
   logout() {
