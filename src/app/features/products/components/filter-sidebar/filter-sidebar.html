@@ -1,0 +1,26 @@
+<div class="filter-sidebar">
+
+    <h3>Filters</h3>
+
+    <hr>
+
+    <section>
+        <h4>Sort</h4>
+    </section>
+
+    <hr>
+
+    <section>
+
+        <h4>Categories</h4>
+
+        @for(category of categories; track category.slug){
+        <div class="category-item">
+            <input type="checkbox" [id]="category.slug" (change)="onCategoryChange($event, category.slug)">
+            <label [for]="category.slug">{{category.name}}</label>
+        </div>
+        }
+
+    </section>
+
+</div>

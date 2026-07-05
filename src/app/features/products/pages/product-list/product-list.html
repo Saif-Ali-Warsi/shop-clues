@@ -1,15 +1,16 @@
 <section class="common-wrapper">
-    @if(!isLoading){
-    <div class="loading-state">
-        <div class="spinner"></div>
-        <p>Loading products...</p>
+
+    <div class="sidebar-container">
+        <app-filter-sidebar (categoriesChanged)="onCategoriesChanged($event)"></app-filter-sidebar>
     </div>
-    } @else {
-    <div class="form-field d-flex gap-15">
-        <!-- <app-search (searchChanged)="onSearch($event)"></app-search> -->
-        <!-- <app-category-filter (categoryChanged)="onCategoryChange($event)"></app-category-filter> -->
-    </div>
+
     <div class="product-grid">
+        @if(!isLoading){
+        <div class="loading-state">
+            <div class="spinner"></div>
+            <p>Loading products...</p>
+        </div>
+        } @else {
         @for(product of products(); track product.id){
         <app-product-card [product]="product"></app-product-card>
         } @empty {
@@ -17,6 +18,8 @@
             <p>No products found</p>
         </div>
         }
+
+        }
     </div>
-    }
+
 </section>

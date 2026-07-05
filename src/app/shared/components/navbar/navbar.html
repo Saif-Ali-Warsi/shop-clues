@@ -30,7 +30,7 @@
     <ul class="category-list">
       @for(category of categories; track category.slug){
       <li class="category-item">
-        <a [routerLink]="['products']" [queryParams]="{category: category.slug}">{{category.name}}</a>
+        <a [routerLink]="['products']" [queryParams]="{categories: category.slug}">{{category.name}}</a>
       </li>
       }
     </ul>

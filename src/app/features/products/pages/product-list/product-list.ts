@@ -2,13 +2,13 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { Product } from '../../models/product.model';
 import { ProductService } from '../../services/product-service';
 import { ProductCard } from '../../components/product-card/product-card';
-import { Search } from '../../components/search/search';
-import { CategoryFilter } from '../../components/category-filter/category-filter';
 import { ActivatedRoute } from '@angular/router';
+import { FilterSidebar } from '../../components/filter-sidebar/filter-sidebar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
-  imports: [ProductCard, Search, CategoryFilter],
+  imports: [ProductCard, FilterSidebar],
   templateUrl: './product-list.html',
   styleUrl: './product-list.scss',
 })
@@ -16,69 +16,60 @@ export class ProductList implements OnInit {
 
   private productService = inject(ProductService);
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
 
   isLoading = false;
   products = signal<Product[]>([]);
   searchTerm = signal('');
-  selectedCategory = signal('');
+  selectedCategories = signal<string[]>([]);
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
 
-      const category = params['category'] ?? '';
+      const categories = params['categories'] ?? '';
       const search = params['search'] ?? '';
 
-      this.selectedCategory.set(category);
+      this.selectedCategories.set(
+        categories ? categories.split(',') : []
+      );
       this.searchTerm.set(search);
-      
+
       this.loadProducts();
     })
   }
 
   loadProducts() {
+
     this.isLoading = true;
-    const search = this.searchTerm()
-    const category = this.selectedCategory()
 
-    if (!search && !category) {
-      this.productService.getProducts().subscribe({
-        next: (response) => {
-          this.products.set(response.products);
-        }
-      })
+    this.productService.getProducts().subscribe({
+      next: (response) => {
+        let products = response.products;
 
-      return;
-    }
+        const search = this.searchTerm();
 
-    if (search && !category) {
-      this.productService.searchProducts(search).subscribe({
-        next: (response) => {
-          this.products.set(response.products)
-        }
-      })
-      return;
-    }
-
-    if (!search && category) {
-      this.productService.getProductsByCategory(category).subscribe({
-        next: (response) => {
-          this.products.set(response.products)
-        }
-      })
-    }
-
-    if (search && category) {
-      this.productService.searchProducts(search).subscribe({
-        next: (response) => {
-          const filterredProduct = response.products.filter(
-            product => product.category === category
+        if (search) {
+          products = products.filter(product =>
+            product.title.toLowerCase().includes(search.toLowerCase())
           )
-
-          this.products.set(filterredProduct)
         }
-      });
-      return;
-    }
+
+
+        const categories = this.selectedCategories();
+
+        if (categories.length) {
+
+          console.log(products[0].category)
+
+          products = products.filter(product => {
+          return  categories.includes(product.category)
+          })
+        }
+
+        this.products.set(products);
+      }
+    });
+
   }
 
   onSearch(query: string) {
@@ -86,9 +77,14 @@ export class ProductList implements OnInit {
     this.loadProducts();
   }
 
-  onCategoryChange(category: string) {
-    this.selectedCategory.set(category)
-    this.loadProducts();
+
+
+  onCategoriesChanged(categories: string[]) {
+    this.router.navigate(['/products'], {
+      queryParams: {
+        categories: categories.length ? categories.join(',') : null
+      }, queryParamsHandling: 'merge'
+    })
   }
 }
 

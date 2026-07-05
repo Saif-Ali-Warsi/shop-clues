@@ -1,5 +1,13 @@
+
+$theme-color: #aab2ff;
+
 input {
+  font-size: 14px;
+  color: $theme-color;
+  width: calc(100% - 20px);
+  background-color: unset;
   height: 26px;
   padding: 8px 10px;
-  border-color: #525681;
+  border: 1px solid #525681;
+  border-radius: 4px;
 }

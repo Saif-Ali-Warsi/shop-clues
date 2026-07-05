@@ -2,7 +2,7 @@
   --text-muted: #94a3b8;
   --bg-card: #1e293b;
   --accent: #3b82f6;
-    font-family:
+  font-family:
     system-ui,
     -apple-system,
     BlinkMacSystemFont,
@@ -13,10 +13,20 @@
   display: block;
 }
 
+.common-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.sidebar-container {
+  width: calc(15% - 20px);
+}
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 2rem;
+  width: calc(85% - 20px);
   list-style: none;
   margin: 0;
 }
@@ -32,10 +42,6 @@
   font-size: 1rem;
   grid-column: 1 / -1;
   list-style: none;
-}
-
-.loading-state{
-  height: 100vh;
 }
 
 .spinner {

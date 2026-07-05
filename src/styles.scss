@@ -36,15 +36,6 @@ main {
   padding: 15px 20px;
 }
 
-input {
-  font-size: 14px;
-  color: $theme-color;
-  width: calc(100% - 20px);
-  background-color: unset;
-  border: 1px solid $theme-color;
-  border-radius: 4px;
-}
-
 button {
   cursor: pointer;
   font-size: 15px;
