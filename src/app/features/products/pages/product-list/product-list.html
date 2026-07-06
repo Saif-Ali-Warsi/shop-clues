@@ -1,7 +1,11 @@
 <section class="common-wrapper">
 
     <div class="sidebar-container">
-        <app-filter-sidebar (categoriesChanged)="onCategoriesChanged($event)"></app-filter-sidebar>
+        <app-filter-sidebar 
+        (sortChanged)="onSortChanged($event)"
+        [checkedCategories]="selectedCategories()"
+            (categoriesChanged)="onCategoriesChanged($event)">
+        </app-filter-sidebar>
     </div>
 
     <div class="product-grid">

@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, output } from '@angular/core';
+import { Component, OnInit, inject, output, input } from '@angular/core';
 import { ProductService } from '../../services/product-service';
 import { Category } from '../../models/category.model';
 
@@ -16,7 +16,11 @@ export class FilterSidebar implements OnInit {
 
   selectedCategories: string[] = [];
 
+  checkedCategories = input<string[]>([]);
+
   categoriesChanged = output<string[]>();
+
+  sortChanged = output<string>();
 
 
   ngOnInit(): void {
@@ -46,6 +50,12 @@ export class FilterSidebar implements OnInit {
     console.log(this.selectedCategories);
     this.categoriesChanged.emit(this.selectedCategories)
 
+  }
+
+  onSortChange(event: Event) {
+    const radio = event.target as HTMLInputElement;
+
+    this.sortChanged.emit(radio.value)
   }
 
 }

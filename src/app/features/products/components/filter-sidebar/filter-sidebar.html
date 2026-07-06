@@ -6,6 +6,57 @@
 
     <section>
         <h4>Sort</h4>
+        <div>
+    <input
+      type="radio"
+      id="relevance"
+      name="sort"
+  (change)="onSortChange($event)"
+      value="relevance">
+
+    <label for="relevance">
+      Relevance
+    </label>
+  </div>
+
+  <div>
+    <input
+      type="radio"
+      id="priceAsc"
+      name="sort"
+      (change)="onSortChange($event)"
+      value="priceAsc">
+
+    <label for="priceAsc">
+      Price: Low to High
+    </label>
+  </div>
+
+  <div>
+    <input
+      type="radio"
+      id="priceDesc"
+      name="sort"
+        (change)="onSortChange($event)"
+      value="priceDesc">
+
+    <label for="priceDesc">
+      Price: High to Low
+    </label>
+  </div>
+
+  <div>
+    <input
+      type="radio"
+      id="rating"
+      name="sort"
+        (change)="onSortChange($event)"
+      value="rating">
+
+    <label for="rating">
+      Rating
+    </label>
+  </div>
     </section>
 
     <hr>
@@ -16,7 +67,8 @@
 
         @for(category of categories; track category.slug){
         <div class="category-item">
-            <input type="checkbox" [id]="category.slug" (change)="onCategoryChange($event, category.slug)">
+            <input type="checkbox" [id]="category.slug" [checked]="checkedCategories().includes(category.slug)"
+                (change)="onCategoryChange($event, category.slug)">
             <label [for]="category.slug">{{category.name}}</label>
         </div>
         }
