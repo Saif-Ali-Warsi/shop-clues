@@ -1,9 +1,7 @@
-<section class="common-wrapper">
+<section class="product-list-wrapper">
 
     <div class="sidebar-container">
-        <app-filter-sidebar 
-        (sortChanged)="onSortChanged($event)"
-        [checkedCategories]="selectedCategories()"
+        <app-filter-sidebar (sortChanged)="onSortChanged($event)" [checkedCategories]="selectedCategories()"
             (categoriesChanged)="onCategoriesChanged($event)">
         </app-filter-sidebar>
     </div>

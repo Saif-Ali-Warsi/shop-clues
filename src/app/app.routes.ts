@@ -4,13 +4,19 @@ import { ProductDetail } from './features/products/pages/product-detail/product-
 import { authGuard } from './features/auth/guards/auth-guard';
 import { Bugs } from './shared/components/bugs/bugs';
 import { guestGuard } from './core/guards/guest-guard';
+import { HomePage } from './features/products/pages/home-page/home-page';
 
 export const routes: Routes = [
 
     {
         path: '',
-        component: ProductList,
-        title: 'Products'
+        redirectTo: 'home',
+        pathMatch: 'full'
+    },
+    {
+        path: 'home',
+        component: HomePage,
+        title: 'Shop Clues | Home'
     },
     {
         path: 'products',
