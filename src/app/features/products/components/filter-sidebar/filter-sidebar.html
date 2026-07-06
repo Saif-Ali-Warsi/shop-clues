@@ -1,78 +1,45 @@
 <div class="filter-sidebar">
-
+  <div class="sidebar-header">
     <h3>Filters</h3>
-
-    <hr>
-
-    <section>
-        <h4>Sort</h4>
-        <div>
-    <input
-      type="radio"
-      id="relevance"
-      name="sort"
-  (change)="onSortChange($event)"
-      value="relevance">
-
-    <label for="relevance">
-      Relevance
-    </label>
   </div>
 
-  <div>
-    <input
-      type="radio"
-      id="priceAsc"
-      name="sort"
-      (change)="onSortChange($event)"
-      value="priceAsc">
+  <!-- Sort Section -->
+  <section class="filter-section">
+    <h4>Sort By</h4>
+    <div class="filter-group">
+      <div class="control-row">
+        <input type="radio" id="relevance" name="sort" (change)="onSortChange($event)" value="relevance">
+        <label for="relevance">Relevance</label>
+      </div>
 
-    <label for="priceAsc">
-      Price: Low to High
-    </label>
-  </div>
+      <div class="control-row">
+        <input type="radio" id="priceAsc" name="sort" (change)="onSortChange($event)" value="priceAsc">
+        <label for="priceAsc">Price: Low to High</label>
+      </div>
 
-  <div>
-    <input
-      type="radio"
-      id="priceDesc"
-      name="sort"
-        (change)="onSortChange($event)"
-      value="priceDesc">
+      <div class="control-row">
+        <input type="radio" id="priceDesc" name="sort" (change)="onSortChange($event)" value="priceDesc">
+        <label for="priceDesc">Price: High to Low</label>
+      </div>
 
-    <label for="priceDesc">
-      Price: High to Low
-    </label>
-  </div>
+      <div class="control-row">
+        <input type="radio" id="rating" name="sort" (change)="onSortChange($event)" value="rating">
+        <label for="rating">Rating</label>
+      </div>
+    </div>
+  </section>
 
-  <div>
-    <input
-      type="radio"
-      id="rating"
-      name="sort"
-        (change)="onSortChange($event)"
-      value="rating">
-
-    <label for="rating">
-      Rating
-    </label>
-  </div>
-    </section>
-
-    <hr>
-
-    <section>
-
-        <h4>Categories</h4>
-
-        @for(category of categories; track category.slug){
-        <div class="category-item">
-            <input type="checkbox" [id]="category.slug" [checked]="checkedCategories().includes(category.slug)"
-                (change)="onCategoryChange($event, category.slug)">
-            <label [for]="category.slug">{{category.name}}</label>
+  <!-- Categories Section -->
+  <section class="filter-section">
+    <h4>Categories</h4>
+    <div class="filter-group scrollable-group">
+      @for(category of categories; track category.slug){
+        <div class="control-row">
+          <input type="checkbox" [id]="category.slug" [checked]="checkedCategories().includes(category.slug)"
+            (change)="onCategoryChange($event, category.slug)">
+          <label [for]="category.slug">{{category.name}}</label>
         </div>
-        }
-
-    </section>
-
+      }
+    </div>
+  </section>
 </div>
