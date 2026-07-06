@@ -84,6 +84,9 @@
 }
 
 .category-nav {
+position: relative;
+  display: flex;
+  align-items: center;
   border-top: 1px solid #2d2d2d;
   max-width: 1400px;
   margin: 0 auto;
@@ -95,8 +98,42 @@
   list-style: none;
   gap: 15px;
   margin: 0;
-  max-width: 1100px;
-  overflow: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}
+
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  height: auto;
+  min-width: auto;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 4px;
+}
+
+.nav-btn.left {
+  left: -40px;
+}
+
+.nav-btn.right {
+  right: -40px;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .category-item {

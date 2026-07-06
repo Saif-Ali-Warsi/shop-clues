@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal, ElementRef, viewChild } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CartService } from '../../../features/cart/services/cart-service';
 import { AuthService } from '../../../features/auth/services/auth-service';
@@ -20,6 +20,11 @@ export class Navbar implements OnInit {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
 
+  categoryContainer = viewChild<ElementRef<HTMLDivElement>>('categoryContainer');
+
+  showLeftButton = signal(false);
+  showRightButton = signal(true);
+
   cartCount = this.cartService.cartCount;
   categories: Category[] = [];
 
@@ -31,6 +36,41 @@ export class Navbar implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.search = params['search'] ?? '';
     })
+  }
+
+
+  // Method to check scroll boundaries
+  updateButtonVisibility() {
+    const container = this.categoryContainer()?.nativeElement;
+    if (!container) return;
+
+    // Show left button only if we have scrolled away from the absolute left (0)
+    this.showLeftButton.set(container.scrollLeft > 5); 
+
+    // Show right button only if there is remaining space left to scroll
+    const hasMoreToScroll = container.scrollLeft + container.clientWidth < container.scrollWidth - 5;
+    this.showRightButton.set(hasMoreToScroll);
+  }
+
+  scrollTabs(direction: 'left' | 'right') {
+    const container = this.categoryContainer()?.nativeElement;
+    if (!container) return;
+
+    const scrollAmount = 200; 
+
+    if (direction === 'left') {
+      container.scrollTo({
+        left: container.scrollLeft - scrollAmount,
+        behavior: 'smooth'
+      });
+    } else {
+      container.scrollTo({
+        left: container.scrollLeft + scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+
+    setTimeout(() => this.updateButtonVisibility(), 300);
   }
 
   logout() {

@@ -27,12 +27,25 @@
   </div>
 
   <nav class="category-nav">
-    <ul class="category-list">
-      @for(category of categories; track category.slug){
-      <li class="category-item">
-        <a [routerLink]="['products']" [queryParams]="{categories: category.slug}">{{category.name}}</a>
-      </li>
+    <div class="category-list" #categoryContainer>
+      @if (showLeftButton()) {
+      <button class="nav-btn left" (click)="scrollTabs('left')">
+        &#10094;
+      </button>
       }
-    </ul>
+
+      @for(category of categories; track category.slug){
+
+      <a class="category-item" [routerLink]="['products']"
+        [queryParams]="{categories: category.slug}">{{category.name}}</a>
+
+      }
+      @if (showRightButton()) {
+      <button class="nav-btn right" (click)="scrollTabs('right')">
+        &#10095;
+      </button>
+      }
+
+    </div>
   </nav>
 </header>
