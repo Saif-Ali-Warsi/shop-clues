@@ -16,7 +16,7 @@ export const routes: Routes = [
     {
         path: 'home',
         component: HomePage,
-        title: 'Shop Clues | Home'
+        title: 'Eshop Clues | Home'
     },
     {
         path: 'products',

@@ -1,114 +1,175 @@
-footer {
-  flex-shrink: 0;
-  width: 100%;
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  background-color: #121212;
-  color: #e0e0e0;
-  font-family: sans-serif;
-  padding: 2rem 2rem 1rem 2rem;
-  border-top: 1px solid #232323;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Footer Container Styling */
+.site-footer {
+  background-color: #1d1d1d; /* Deep dark theme background */
+  color: #ffffff;
+  padding: 60px 40px;
 }
 
 .footer-container {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 2fr 2fr;
+  gap: 40px;
+}
+
+/* Common Column Rules */
+.footer-col h3 {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+/* Brand Column (Left) */
+.brand-col {
   display: flex;
-  justify-content: space-between;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
-.footer-brand {
-  flex: 1;
-  min-width: 200px;
+.logo-placeholder {
+  margin-bottom: 25px;
 }
 
-.footer-brand h2 {
-  color: #bb86fc;
-  margin: 0 0 0.5rem 0;
-  font-size: 1.3rem;
+.logo-placeholder img {
+  max-height: 50px;
+  object-fit: contain;
 }
 
-.footer-brand p {
-  color: #a0a0a0;
-  font-size: 0.85rem;
-  line-height: 1.4;
-  margin: 0;
+/* Newsletter Input */
+.newsletter-box {
+  position: relative;
+  max-width: 280px;
+  margin-bottom: 25px;
 }
 
-.footer-links {
-  min-width: 120px;
+.newsletter-box input {
+  width: 100%;
+  padding: 14px 45px 14px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #ffffff;
+  color: #000000;
 }
 
-.footer-links h3, 
-.footer-socials h3 {
-  color: #ffffff;
-  font-size: 1rem;
-  margin: 0 0 0.5rem 0;
+.newsletter-box input::placeholder {
+  color: #8c8c8c;
 }
 
-.footer-links ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.newsletter-box button {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  min-width: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
-.footer-links li {
-  margin-bottom: 0.25rem;
+.newsletter-box button svg {
+  width: 20px;
+  height: 20px;
+  stroke: #1d1d1d;
+  transition: transform 0.2s ease;
 }
 
-.footer-links a {
-  color: #a0a0a0;
-  text-decoration: none;
-  font-size: 0.85rem;
-  transition: color 0.2s ease;
+.newsletter-box button:hover svg {
+  transform: translateX(3px);
 }
 
-.footer-links a:hover {
-  color: #bb86fc;
-}
-
+/* Social Icons */
 .social-icons {
   display: flex;
-  gap: 0.5rem;
+  gap: 22px;
+  margin-bottom: 35px;
+  align-items: center;
 }
 
 .social-icons a {
-  display: inline-block;
-  color: #e0e0e0;
-  background-color: #2a2a2a;
+  color: #ffffff;
+  font-size: 18px;
   text-decoration: none;
-  width: 32px;
-  height: 32px;
-  line-height: 32px;
-  text-align: center;
-  border-radius: 50%;
-  font-size: 0.8rem;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: opacity 0.2s;
 }
 
 .social-icons a:hover {
-  background-color: #bb86fc;
-  color: #121212;
+  opacity: 0.7;
 }
 
-.footer-bottom {
-  max-width: 1200px;
-  margin: 1rem auto 0 auto;
-  padding-top: 1rem;
-  border-top: 1px solid #232323;
-  text-align: center;
+.copyright {
+  font-size: 12px;
+  color: #999999;
+  line-height: 1.5;
+  margin-top: auto; /* Pushes copyright to bottom on tall screens */
 }
 
-.footer-bottom p {
-  color: #757575;
-  font-size: 0.75rem;
-  margin: 0;
+/* Multi-column Link Subsections */
+.links-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
-@media (max-width: 768px) {
+.links-sub-col {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.links-sub-col a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  transition: color 0.2s;
+}
+
+.links-sub-col a:hover {
+  color: #00e676; /* Accent hover color choice */
+}
+
+/* Vertical Divider Lines */
+.divider-left {
+  border-left: 1px solid #444444;
+  padding-left: 40px;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
   .footer-container {
-    flex-direction: column;
-    gap: 1.5rem;
+    grid-template-columns: 1fr; /* Stack columns vertically */
+    gap: 50px;
+  }
+
+  .divider-left {
+    border-left: none;
+    border-top: 1px solid #444444;
+    padding-left: 0;
+    padding-top: 40px;
+  }
+}
+
+@media (max-width: 550px) {
+  .site-footer {
+    padding: 40px 20px;
+  }
+  
+  .links-grid {
+    grid-template-columns: 1fr; /* Sub-columns stack on small devices */
+    gap: 15px;
   }
 }

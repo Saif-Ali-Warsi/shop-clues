@@ -70,10 +70,12 @@ select {
   border: 1px solid $theme-color;
 }
 
-.no-padding {
-  padding: 0;
+.no-padding,
+.p-0 {
+  padding: 0 !important;
   min-width: unset;
 }
+
 .no-border {
   border: 0;
 }
@@ -156,8 +158,6 @@ a {
 .danger {
   color: $error-color;
 }
-
-
 
 @media (max-width: 768px) {
   main {

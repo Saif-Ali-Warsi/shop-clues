@@ -1,6 +1,20 @@
+section {
+  padding: 20px;
+}
+
+.section-heading {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
 .category-card-container,
 .products-card-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 2rem;
+}
+
+.slide-content img{
+  width: 100%;
 }

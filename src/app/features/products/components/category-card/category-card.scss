@@ -5,7 +5,7 @@
   justify-content: center;
   padding: 1.5rem;
   background-color: #1e1e1e;
-  border: 1px solid #333333;
+  border: 1px dashed #3a4e65;
   border-radius: 12px;
   cursor: pointer;
   transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
@@ -28,8 +28,8 @@
 
 .category-card h3 {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
   color: #ffffff;
-  font-family: sans-serif;
   text-align: center;
 }
