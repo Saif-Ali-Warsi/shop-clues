@@ -47,7 +47,6 @@ export class FilterSidebar implements OnInit {
       )
     }
 
-    console.log(this.selectedCategories);
     this.categoriesChanged.emit(this.selectedCategories)
 
   }

@@ -1,1 +1,19 @@
-<p>home-page works!</p>
+<section>
+    <swiper-container [config]="swiperConfig" slides-per-view="1" navigation="true" pagination="true">
+        @for (slide of slides; track $index) {
+        <swiper-slide>
+            <div class="slide-content">
+                <img [src]="slide.img" alt="Product Slide" style="width: 100%; display: block;">
+            </div>
+        </swiper-slide>
+        }
+    </swiper-container>
+</section>
+
+<section>
+    <div class="category-card-container">
+        @for(category of categories; track category.slug){
+        <app-category-card [category]="category"></app-category-card>
+        }
+    </div>
+</section>
