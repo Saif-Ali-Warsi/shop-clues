@@ -1,1 +1,85 @@
-<p>profile works!</p>
+@if (profile(); as user) {
+<div class="profile-container">
+  <div class="profile-grid">
+    
+    <div class="profile-sidebar-card">
+      <div class="avatar-wrapper">
+        <img [src]="user.image" [alt]="user.firstName" class="profile-avatar">
+      </div>
+      <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+      <p class="username">&#64;{{ user.username }}</p>
+      <p class="title-text">{{ user.company.title }} at {{ user.company.name }}</p>
+    </div>
+
+    <div class="profile-main-content">
+      
+      <div class="info-card">
+        <h3>Personal Details</h3>
+        <div class="details-grid">
+          <div class="info-group">
+            <span class="label">Email Address</span>
+            <span class="value">{{ user.email }}</span>
+          </div>
+          <div class="info-group">
+            <span class="label">Phone Number</span>
+            <span class="value">{{ user.phone }}</span>
+          </div>
+          <div class="info-group">
+            <span class="label">Birth Date</span>
+            <span class="value">{{ user.birthDate }} (Age: {{ user.age }})</span>
+          </div>
+          <div class="info-group">
+            <span class="label">Gender</span>
+            <span class="value" style="text-transform: capitalize;">{{ user.gender }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h3>Primary Address</h3>
+        <div class="details-grid">
+          <div class="info-group wide">
+            <span class="label">Street</span>
+            <span class="value">{{ user.address.address }}</span>
+          </div>
+          <div class="info-group">
+            <span class="label">City</span>
+            <span class="value">{{ user.address.city }}</span>
+          </div>
+          <div class="info-group">
+            <span class="label">State</span>
+            <span class="value">{{ user.address.state }} ({{ user.address.stateCode }})</span>
+          </div>
+          <div class="info-group">
+            <span class="label">Postal Code</span>
+            <span class="value">{{ user.address.postalCode }}</span>
+          </div>
+          <div class="info-group">
+            <span class="label">Country</span>
+            <span class="value">{{ user.address.country }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <h3>Vital Stats & Education</h3>
+        <div class="details-grid">
+          <div class="info-group">
+            <span class="label">Height / Weight</span>
+            <span class="value">{{ user.height }}cm / {{ user.weight }}kg</span>
+          </div>
+          <div class="info-group">
+            <span class="label">Blood Group</span>
+            <span class="value">{{ user.bloodGroup }}</span>
+          </div>
+          <div class="info-group wide">
+            <span class="label">University</span>
+            <span class="value">{{ user.university }}</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+}

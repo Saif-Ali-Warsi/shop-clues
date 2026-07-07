@@ -1,8 +1,128 @@
-.wrapper {
-  padding: 20px;
+.login-page-container {
+  min-height: calc(100vh - 70px);
+  background-color: #121212;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
 }
 
-input {
-  height: 35px;
-  padding: 8px 10px;
+.login-card {
+  background-color: #1a1a1a;
+  border: 1px solid #2d2d2d;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 420px;
+  padding: 40px 32px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 36px;
+
+  .brand-logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: #f43397;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+
+  h2 {
+    margin: 0 0 8px 0;
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    color: #888888;
+  }
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #b0b0b0;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+}
+
+.input-wrapper {
+  position: relative;
+
+  input {
+    width: 100%;
+    background-color: #242424;
+    border: 1px solid #333333;
+    border-radius: 8px;
+    padding: 14px 16px;
+    color: #ffffff;
+    font-size: 15px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+
+    &::placeholder {
+      color: #555555;
+    }
+
+    &:focus {
+      border-color: #f43397;
+      background-color: #1c1c1c;
+      box-shadow: 0 0 0 3px rgba(244, 51, 151, 0.15);
+    }
+  }
+}
+
+.form-actions {
+  margin-top: 12px;
+}
+
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(45deg, #f43397, #d01c7a);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 4px 12px rgba(244, 51, 151, 0.3);
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(244, 51, 151, 0.45);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    background: #2d2d2d;
+    color: #666666;
+    box-shadow: none;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
 }
