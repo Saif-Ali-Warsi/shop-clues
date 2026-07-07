@@ -17,7 +17,7 @@ export class ProductService {
   private readonly baseUrl = environment.apiUrl;
 
   getProducts(): Observable<ProductResponse> {
-    return this.http.get<ProductResponse>(`${this.baseUrl}/products`)
+    return this.http.get<ProductResponse>(`${this.baseUrl}/products?limit=0`)
   }
 
   getProductById(id: number): Observable<Product> {
