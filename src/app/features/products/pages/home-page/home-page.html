@@ -17,3 +17,21 @@
         }
     </div>
 </section>
+
+<section>
+    <h1>Trending Products</h1>
+    <div class="products-card-container">
+        @for(product of trendingProducts; track product.id){
+        <app-product-card [product]="product"></app-product-card>
+        }
+    </div>
+</section>
+
+<section>
+    <h1>Best Seller</h1>
+    <div class="products-card-container">
+        @for(product of bestSeller; track product.id){
+        <app-product-card [product]="product"></app-product-card>
+        }
+    </div>
+</section>
