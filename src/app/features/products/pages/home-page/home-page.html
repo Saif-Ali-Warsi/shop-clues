@@ -1,59 +1,62 @@
-<section class="no-padding">
-    <swiper-container slides-per-view="1" navigation="true" pagination="true" loop="true" grab-cursor="true" speed="600"
-        [navigation]="true" [pagination]="{ clickable: true }" [breakpoints]="{
+<div class="view-port-limit">
+    <section>
+        <swiper-container slides-per-view="1" navigation="true" pagination="true" loop="true" grab-cursor="true"
+            speed="600" [navigation]="true" [pagination]="{ clickable: true }" [breakpoints]="{
       '640': { 'slidesPerView': 1, 'spaceBetween': 0 },
       '1024': { 'slidesPerView': 1, 'spaceBetween': 0 }
     }">
-        @for (slide of homeBanners; track $index) {
-        <swiper-slide>
-            <div class="slide-content">
-                <img [src]="slide.img" alt="Product Slide" style="width: 100%; display: block;">
-            </div>
-        </swiper-slide>
-        }
-    </swiper-container>
-</section>
+            @for (slide of homeBanners; track $index) {
+            <swiper-slide>
+                <div class="slide-content">
+                    <img [src]="slide.img" alt="Product Slide"
+                        style="width: 100%; border-radius: 50px; display: block;">
+                </div>
+            </swiper-slide>
+            }
+        </swiper-container>
+    </section>
 
-<section>
-    <h1 class="section-heading">Categories</h1>
-    <div class="category-card-container">
-        @for(category of categories; track category.slug){
-        <app-category-card [category]="category"></app-category-card>
-        }
-    </div>
-</section>
+    <section>
+        <h1 class="section-heading">Categories</h1>
+        <div class="category-card-container">
+            @for(category of categories; track category.slug){
+            <app-category-card [category]="category"></app-category-card>
+            }
+        </div>
+    </section>
 
-<section>
-    <h1 class="section-heading">Trending Products</h1>
-    <div class="products-card-container">
-        @for(product of trendingProducts; track product.id){
-        <app-product-card [product]="product"></app-product-card>
-        }
-    </div>
-</section>
+    <section>
+        <h1 class="section-heading">Trending Products</h1>
+        <div class="products-card-container">
+            @for(product of trendingProducts; track product.id){
+            <app-product-card [product]="product"></app-product-card>
+            }
+        </div>
+    </section>
 
-<section>
-    <h1 class="section-heading">Deals Of The Day</h1>
-    <swiper-container slides-per-view="4" space-between="20" loop="true" grab-cursor="true" speed="600"
-        [navigation]="true" [pagination]="{ clickable: true }" [breakpoints]="{
+    <section>
+        <h1 class="section-heading">Deals Of The Day</h1>
+        <swiper-container slides-per-view="4" space-between="20" loop="true" grab-cursor="true" speed="600"
+            [navigation]="true" [pagination]="{ clickable: true }" [breakpoints]="{
       '640': { 'slidesPerView': 2, 'spaceBetween': 20 },
       '1024': { 'slidesPerView': 4, 'spaceBetween': 30 }
     }">
-        @for (slide of quickCards; track $index) {
-        <swiper-slide>
-            <div class="slide-content">
-                <img [src]="slide.img">
-            </div>
-        </swiper-slide>
-        }
-    </swiper-container>
-</section>
+            @for (slide of quickCards; track $index) {
+            <swiper-slide>
+                <div class="slide-content">
+                    <img [src]="slide.img" style="border-radius: 20px;">
+                </div>
+            </swiper-slide>
+            }
+        </swiper-container>
+    </section>
 
-<section>
-    <h1 class="section-heading">Best Sellers</h1>
-    <div class="products-card-container">
-        @for(product of bestSeller; track product.id){
-        <app-product-card [product]="product"></app-product-card>
-        }
-    </div>
-</section>
+    <section>
+        <h1 class="section-heading">Best Sellers</h1>
+        <div class="products-card-container">
+            @for(product of bestSeller; track product.id){
+            <app-product-card [product]="product"></app-product-card>
+            }
+        </div>
+    </section>
+</div>

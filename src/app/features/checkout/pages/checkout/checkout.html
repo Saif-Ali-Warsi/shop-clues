@@ -1,0 +1,13 @@
+<div class="checkout-container">
+    @if(currentStep() === 'address'){
+    <app-address-form (continue)="goToPayment()"></app-address-form>
+    }
+
+    @if(currentStep() === 'payment'){
+    <app-payment-method (continue)="goToSummary()"></app-payment-method>
+    }
+
+    @if(currentStep() === 'summary'){
+    <app-order-summary></app-order-summary>
+    }
+</div>

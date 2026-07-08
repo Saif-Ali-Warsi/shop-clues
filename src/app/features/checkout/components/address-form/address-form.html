@@ -1,0 +1,27 @@
+<form [formGroup]="addressForm">
+    <div>
+        <input type="text" placeholder="Full Name" formControlName="fullName">
+    </div>
+
+    <div>
+        <input type="number" formControlName="phone">
+    </div>
+
+    <div>
+        <textarea formControlName="address"></textarea>
+    </div>
+
+    <div>
+        <input type="text" formControlName="city">
+    </div>
+
+    <div>
+        <input type="text" formControlName="state">
+    </div>
+
+    <div>
+        <input type="number" formControlName="pincode">
+    </div>
+
+    <button type="submit" (click)="submit()">Save Address</button>
+</form>

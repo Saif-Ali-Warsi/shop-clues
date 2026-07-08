@@ -1,0 +1,15 @@
+<input type="radio" name="payment" id="cod" value="cod" checked (change)="onPaymentChange($event)">
+<label for="cod">COD</label>
+<hr>
+<input type="radio" name="payment" id="upi" value="upi" (change)="onPaymentChange($event)">
+<label for="upi"> UPI</label>
+<hr>
+<input type="radio" name="payment" id="card" value="card" (change)="onPaymentChange($event)">
+<label for="card">CARD</label>
+<hr>
+<input type="radio" name="payment" id="netbanking" value="netbanking" (change)="onPaymentChange($event)">
+<label for="netbanking">NET BANKING</label>
+
+<button (click)="continueToSummary()">
+    Continue
+</button>

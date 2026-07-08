@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CartService } from '../../services/cart-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -10,6 +11,7 @@ import { CartService } from '../../services/cart-service';
 export class Cart {
 
   private cartService = inject(CartService)
+  private router = inject(Router);
 
   cartItem = this.cartService.cartItems;
 
@@ -26,6 +28,10 @@ export class Cart {
 
   removeItem(id: number) {
     this.cartService.removeItem(id)
+  }
+
+  proceedCheckout() {
+    this.router.navigate(['/checkout'])
   }
 
 }

@@ -1,0 +1,41 @@
+
+@if(address(); as address){
+
+    <h3>Deliver To</h3>
+
+    <p>{{address.fullName}}</p>
+
+    <p>{{address.address}}</p>
+
+    <p>{{address.city}}, {{address.state}}</p>
+
+    <p>{{address.pincode}}</p>
+
+}
+<hr>
+<h3>Payment Method</h3>
+
+<p>{{paymentMethod()}}</p>
+<hr>
+<p>Items: {{cartItems().length}}</p>
+
+<p>Subtotal: ₹{{cartTotal()}}</p>
+
+<p>Shipping: Free</p>
+
+<p>Total: ₹{{cartTotal()}}</p>
+<button
+    [disabled]="isPlacingOrder()"
+    (click)="placeOrder()">
+
+    @if(isPlacingOrder()){
+
+        Processing...
+
+    } @else {
+
+        Place Order
+
+    }
+
+</button>

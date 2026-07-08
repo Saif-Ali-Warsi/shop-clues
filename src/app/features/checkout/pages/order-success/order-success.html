@@ -1,0 +1,17 @@
+@if(orderId()){
+
+    <h2>
+        Order #{{orderId()}}
+    </h2>
+
+    <p>
+        {{orderDate()}}
+    </p>
+
+    <p>
+        {{estimatedDelivery()}}
+    </p>
+
+}
+
+<button (click)="continueShopping()">continueShopping</button>

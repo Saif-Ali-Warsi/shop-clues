@@ -13,7 +13,7 @@ import { ProductCard } from '../../components/product-card/product-card';
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
 })
-export class HomePage implements OnInit{
+export class HomePage implements OnInit {
 
 
   private productService = inject(ProductService);
@@ -67,7 +67,7 @@ export class HomePage implements OnInit{
   }
 
 
-  
+
 
 
 }

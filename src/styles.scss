@@ -16,6 +16,11 @@ body {
   height: 100%;
 }
 
+.view-port-limit {
+  max-width: 1500px;
+  margin: auto;
+}
+
 app-root {
   display: flex;
   flex-direction: column;

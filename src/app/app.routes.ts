@@ -21,32 +21,44 @@ export const routes: Routes = [
     {
         path: 'products',
         component: ProductList,
-        title: 'Products'
+        title: 'Products | Eshop Clues'
     },
     {
         path: 'products/:id',
         component: ProductDetail,
-        title: 'Products'
+        title: 'Products | Eshop Clues'
     },
     {
         path: 'login',
         loadComponent: () => import('./features/auth/pages/login/login')
             .then(c => c.Login),
         canActivate: [guestGuard],
-        title: 'Login'
+        title: 'Login | Eshop Clues'
     },
     {
         path: 'profile',
         loadComponent: () => import('./features/profile/pages/profile/profile')
             .then(c => c.Profile),
         canActivate: [authGuard],
-        title: 'Profile'
+        title: 'Profile | Eshop Clues'
     },
     {
         path: 'cart',
         loadComponent: () => import('./features/cart/pages/cart/cart').then(c => c.Cart),
         canActivate: [authGuard],
-        title: 'Cart'
+        title: 'Cart | Eshop Clues'
+    },
+    {
+        path: 'checkout',
+        loadComponent: () => import('./features/checkout/pages/checkout/checkout').then(c => c.Checkout),
+        canActivate: [authGuard],
+        title: 'Checkout | Eshop Clues'
+    },
+    {
+        path: 'order-success',
+        loadComponent: () => import('./features/checkout/pages/order-success/order-success').then(c => c.OrderSuccess),
+        canActivate: [authGuard],
+        title:'Order Success | Eshop Clues'
     },
     {
         path: 'bugs',
