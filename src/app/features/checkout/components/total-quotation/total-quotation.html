@@ -1,30 +1,32 @@
-  <div class="total-quotation-panel">
-    <h2>Your Total Summary</h2>
+<div class="total-quotation-panel">
+  <h2>Order Summary</h2>
 
-    <div>
+  <div class="quotation-rows-group">
+    <div class="quote-row">
       <span>Total Quantity</span>
-      <span>{{cartCount()}}</span>
+      <span class="val">{{cartCount()}} items</span>
     </div>
 
-    <div>
+    <div class="quote-row">
       <span>Total Price</span>
-      <span>{{cartTotal()}}</span>
+      <span class="val">₹{{cartTotal()}}</span>
     </div>
 
-    <div>
+    <div class="quote-row">
       <span>Total Discount</span>
-      <span class="discount-text">-45</span>
+      <span class="val discount-text">-₹45</span>
     </div>
 
-    <div>
+    <div class="quote-row">
       <span>Total Tax</span>
-      <span>3545</span>
-    </div>
-
-    <hr>
-
-    <div>
-      <span>Estimated Total</span>
-      <span>{{cartTotal()}}</span>
+      <span class="val">₹3,545</span>
     </div>
   </div>
+
+  <div class="quote-divider"></div>
+
+  <div class="quote-row final-total-row">
+    <span>Estimated Total</span>
+    <span class="price">₹{{cartTotal()}}</span>
+  </div>
+</div>

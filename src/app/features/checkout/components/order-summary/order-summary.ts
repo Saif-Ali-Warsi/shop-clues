@@ -2,10 +2,12 @@ import { Component, inject, signal, output } from '@angular/core';
 import { CheckoutService } from '../../services/checkout-service';
 import { Router } from '@angular/router';
 import { CartService } from '../../../cart/services/cart-service';
+import { UpperCasePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-order-summary',
-  imports: [],
+  imports: [UpperCasePipe],
   templateUrl: './order-summary.html',
   styleUrl: './order-summary.scss',
 })

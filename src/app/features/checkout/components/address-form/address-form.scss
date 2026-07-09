@@ -1,0 +1,83 @@
+@use '../../pages/checkout/checkout.scss';
+
+.checkout-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &.full-width {
+    grid-column: span 2;
+    @media (max-width: 576px) {
+      grid-column: span 1;
+    }
+  }
+
+  label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #a0a0a0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  input, textarea {
+    width: 100%;
+    background-color: #242424;
+    border: 1px solid #333333;
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: all 0.2s ease;
+
+    &::placeholder {
+      color: #555555;
+    }
+
+    &:focus {
+      border-color: #f43397;
+      box-shadow: 0 0 0 3px rgba(244, 51, 151, 0.15);
+      background-color: #1c1c1c;
+    }
+  }
+}
+
+.action-row {
+  margin-top: 12px;
+}
+
+.prime-action-btn {
+  width: 100%;
+  background: linear-gradient(45deg, #f43397, #d01c7a);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(244, 51, 151, 0.3);
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(244, 51, 151, 0.45);
+  }
+  
+  &:active {
+    transform: translateY(1px);
+  }
+}

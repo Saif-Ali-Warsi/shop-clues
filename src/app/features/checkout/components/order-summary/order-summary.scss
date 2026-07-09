@@ -1,0 +1,100 @@
+@use '../../pages/checkout/checkout.scss';
+@use '../address-form/address-form.scss';
+@use '../payment-method/payment-method.scss';
+
+.summary-meta-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  border-bottom: 1px solid #2d2d2d;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.summary-block {
+  h4 {
+    margin: 0 0 12px 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #888888;
+    letter-spacing: 0.8px;
+  }
+
+  .address-badge-info {
+    p {
+      margin: 0 0 4px 0;
+      font-size: 14px;
+      color: #b0b0b0;
+      
+      &.name {
+        color: #ffffff;
+        font-weight: 600;
+        font-size: 15px;
+      }
+    }
+  }
+
+  .method-tag {
+    background-color: #242424;
+    border: 1px solid #333333;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffffff;
+    display: inline-block;
+    letter-spacing: 0.5px;
+  }
+}
+
+.summary-financials-block {
+  margin-bottom: 32px;
+
+  h4 {
+    margin: 0 0 16px 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #888888;
+    letter-spacing: 0.8px;
+  }
+}
+
+.invoice-ledger {
+  background-color: #141414;
+  border: 1px solid #2d2d2d;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .ledger-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #b0b0b0;
+
+    .free-text {
+      color: #00c853;
+      font-weight: 600;
+    }
+
+    &.total-row {
+      border-top: 1px solid #2d2d2d;
+      padding-top: 14px;
+      margin-top: 4px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+  }
+}
+
+.place-order-btn {
+  flex: 1;
+  max-width: 320px;
+}

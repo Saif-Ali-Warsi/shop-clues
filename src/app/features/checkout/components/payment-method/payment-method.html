@@ -1,25 +1,46 @@
-<div class="d-flex">
-    <div><input type="radio" name="payment" id="cod" value="cod" checked (change)="onPaymentChange($event)">
-        <label for="cod">COD</label>
-        <hr>
+<div class="checkout-split-layout">
+  <div class="checkout-card">
+    <h3>Select Payment Method</h3>
+    
+    <div class="payment-selection-column">
+      <div class="payment-row-card" [class.selected]="true">
+        <input type="radio" name="payment" id="cod" value="cod" checked (change)="onPaymentChange($event)">
+        <label for="cod">
+          <span class="title">Cash On Delivery (COD)</span>
+          <span class="subtitle">Pay with cash when order arrives</span>
+        </label>
+      </div>
+
+      <div class="payment-row-card">
         <input type="radio" name="payment" id="upi" value="upi" (change)="onPaymentChange($event)">
-        <label for="upi"> UPI</label>
-        <hr>
+        <label for="upi">
+          <span class="title">Instant UPI Transfer</span>
+          <span class="subtitle">Google Pay, PhonePe, BHIM</span>
+        </label>
+      </div>
+
+      <div class="payment-row-card">
         <input type="radio" name="payment" id="card" value="card" (change)="onPaymentChange($event)">
-        <label for="card">CARD</label>
-        <hr>
+        <label for="card">
+          <span class="title">Credit / Debit Card</span>
+          <span class="subtitle">Visa, Mastercard, RuPay, Amex</span>
+        </label>
+      </div>
+
+      <div class="payment-row-card">
         <input type="radio" name="payment" id="netbanking" value="netbanking" (change)="onPaymentChange($event)">
-        <label for="netbanking">NET BANKING</label>
-
-        <button (click)="goBack()">
-            Back
-        </button>
-        <button (click)="continueToSummary()">
-            Continue
-        </button>
+        <label for="netbanking">
+          <span class="title">Net Banking</span>
+          <span class="subtitle">All major Indian banks supported</span>
+        </label>
+      </div>
     </div>
-    <div>
 
-        <app-total-quotation></app-total-quotation>
+    <div class="button-navigation-group">
+      <button class="secondary-btn" (click)="goBack()">Back</button>
+      <button class="prime-action-btn" (click)="continueToSummary()">Continue to Summary</button>
     </div>
+  </div>
+
+  <app-total-quotation></app-total-quotation>
 </div>

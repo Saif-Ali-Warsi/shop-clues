@@ -1,17 +1,39 @@
-@if(orderId()){
+<div class="success-page-viewport">
+  <div class="success-card">
+    <div class="success-icon-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+    
+    <h1>Thank You For Your Order!</h1>
+    <p class="subtitle">Your payment was processed successfully and your order is confirmed.</p>
 
-    <h2>
-        Order #{{orderId()}}
-    </h2>
+    @if(orderId()){
+      <div class="receipt-details-box">
+        <div class="receipt-row">
+          <span class="lbl">Order ID</span>
+          <span class="val order-id-text">#{{orderId()}}</span>
+        </div>
+        
+        <div class="receipt-row">
+          <span class="lbl">Order Date</span>
+          <span class="val">
+            {{ orderDate() | date: 'mediumDate' }} • {{ orderDate() | date: 'shortTime' }}
+          </span>
+        </div>
+        
+        <div class="receipt-row">
+          <span class="lbl">Estimated Delivery</span>
+          <span class="val delivery-highlight">
+            {{ estimatedDelivery() | date: 'longDate' }}
+          </span>
+        </div>
+      </div>
+    }
 
-    <p>
-        {{orderDate()}}
-    </p>
-
-    <p>
-        {{estimatedDelivery()}}
-    </p>
-
-}
-
-<button (click)="continueShopping()">continueShopping</button>
+    <button class="continue-shopping-btn" (click)="continueShopping()">
+      Continue Shopping
+    </button>
+  </div>
+</div>

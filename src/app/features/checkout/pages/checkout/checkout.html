@@ -1,13 +1,32 @@
-<div class="checkout-container">
+<div class="checkout-master-viewport">
+  <div class="checkout-stepper-head">
+    <div class="step-node" [class.active]="currentStep() === 'address'" [class.complete]="currentStep() === 'payment' || currentStep() === 'summary'">
+      <div class="circle">1</div>
+      <span>Shipping</span>
+    </div>
+    <div class="step-line" [class.filled]="currentStep() === 'payment' || currentStep() === 'summary'"></div>
+    <div class="step-node" [class.active]="currentStep() === 'payment'" [class.complete]="currentStep() === 'summary'">
+      <div class="circle">2</div>
+      <span>Payment</span>
+    </div>
+    <div class="step-line" [class.filled]="currentStep() === 'summary'"></div>
+    <div class="step-node" [class.active]="currentStep() === 'summary'">
+      <div class="circle">3</div>
+      <span>Summary</span>
+    </div>
+  </div>
+
+  <div class="checkout-step-container">
     @if(currentStep() === 'address'){
-    <app-address-form (continue)="goToPayment()"></app-address-form>
+      <app-address-form (continue)="goToPayment()"></app-address-form>
     }
 
     @if(currentStep() === 'payment'){
-    <app-payment-method (back)="goToAddress()" (continue)="goToSummary()"></app-payment-method>
+      <app-payment-method (back)="goToAddress()" (continue)="goToSummary()"></app-payment-method>
     }
 
     @if(currentStep() === 'summary'){
-    <app-order-summary (back)="goToPayment()"></app-order-summary>
+      <app-order-summary (back)="goToPayment()"></app-order-summary>
     }
+  </div>
 </div>

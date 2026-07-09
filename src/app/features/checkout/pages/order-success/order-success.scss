@@ -1,0 +1,119 @@
+.success-page-viewport {
+  min-height: calc(100vh - 70px);
+  background-color: #121212;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+
+.success-card {
+  background-color: #1a1a1a;
+  border: 1px solid #2d2d2d;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 100%;
+  padding: 48px 32px;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.success-icon-badge {
+  width: 64px;
+  height: 64px;
+  background-color: rgba(0, 200, 83, 0.1);
+  border: 2px solid #00c853;
+  color: #00c853;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px auto;
+  box-shadow: 0 0 20px rgba(0, 200, 83, 0.2);
+
+  svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+h1 {
+  margin: 0 0 12px 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.subtitle {
+  margin: 0 0 32px 0;
+  font-size: 14px;
+  color: #888888;
+  line-height: 1.5;
+}
+
+.receipt-details-box {
+  background-color: #242424;
+  border: 1px solid #333333;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.receipt-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  align-items: center;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.4;
+
+  .lbl {
+    color: #888888;
+    font-weight: 500;
+  }
+
+  .val {
+    color: #ffffff;
+    font-weight: 500;
+    text-align: right;
+  }
+
+  .order-id-text {
+    color: #f43397;
+    font-weight: 700;
+    font-family: monospace;
+    font-size: 15px;
+  }
+
+  .delivery-highlight {
+    color: #00c853;
+    font-weight: 600;
+  }
+}
+
+.continue-shopping-btn {
+  background: linear-gradient(45deg, #f43397, #d01c7a);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(244, 51, 151, 0.3);
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(244, 51, 151, 0.45);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}

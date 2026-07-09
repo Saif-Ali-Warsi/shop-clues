@@ -1,31 +1,42 @@
-<div class="d-flex">
-<form [formGroup]="addressForm">
-    <div>
-        <input type="text" placeholder="Full Name" formControlName="fullName">
-    </div>
+<div class="checkout-split-layout">
+  <div class="checkout-card">
+    <h3>Shipping Address</h3>
+    <form [formGroup]="addressForm" class="checkout-form-grid">
+      <div class="form-field full-width">
+        <label>Full Name</label>
+        <input type="text" placeholder="John Doe" formControlName="fullName">
+      </div>
 
-    <div>
-        <input type="number" formControlName="phone">
-    </div>
+      <div class="form-field full-width">
+        <label>Phone Number</label>
+        <input type="number" placeholder="Enter contact number" formControlName="phone">
+      </div>
 
-    <div>
-        <textarea formControlName="address"></textarea>
-    </div>
+      <div class="form-field full-width">
+        <label>Street Address</label>
+        <textarea placeholder="Flat, House no., Building, Company, Apartment" formControlName="address" rows="3"></textarea>
+      </div>
 
-    <div>
-        <input type="text" formControlName="city">
-    </div>
+      <div class="form-field">
+        <label>Town / City</label>
+        <input type="text" placeholder="City" formControlName="city">
+      </div>
 
-    <div>
-        <input type="text" formControlName="state">
-    </div>
+      <div class="form-field">
+        <label>State</label>
+        <input type="text" placeholder="State" formControlName="state">
+      </div>
 
-    <div>
-        <input type="number" formControlName="pincode">
-    </div>
+      <div class="form-field full-width">
+        <label>Pincode / Postal Code</label>
+        <input type="number" placeholder="6-digit pincode" formControlName="pincode">
+      </div>
 
-    <button type="submit" (click)="submit()">Save Address</button>
-</form>
+      <div class="form-field full-width action-row">
+        <button type="submit" class="prime-action-btn" (click)="submit()">Save & Continue</button>
+      </div>
+    </form>
+  </div>
 
-<app-total-quotation></app-total-quotation>
+  <app-total-quotation></app-total-quotation>
 </div>

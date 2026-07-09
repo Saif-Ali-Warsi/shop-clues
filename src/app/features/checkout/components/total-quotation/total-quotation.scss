@@ -1,0 +1,58 @@
+.total-quotation-panel {
+  background-color: #1a1a1a;
+  border: 1px solid #2d2d2d;
+  border-radius: 16px;
+  padding: 24px;
+  box-sizing: border-box;
+  width: 100%;
+
+  h2 {
+    margin: 0 0 20px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+  }
+}
+
+.quotation-rows-group {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.quote-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #a0a0a0;
+
+  .val {
+    color: #ffffff;
+    font-weight: 500;
+  }
+
+  .discount-text {
+    color: #00c853;
+    font-weight: 600;
+  }
+
+  &.final-total-row {
+    font-size: 15px;
+    color: #ffffff;
+    font-weight: 600;
+
+    .price {
+      font-size: 20px;
+      font-weight: 700;
+      color: #f43397;
+    }
+  }
+}
+
+.quote-divider {
+  height: 1px;
+  background-color: #2d2d2d;
+  margin: 20px 0;
+}

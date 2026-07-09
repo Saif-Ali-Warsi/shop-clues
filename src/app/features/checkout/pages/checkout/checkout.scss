@@ -1,0 +1,117 @@
+.checkout-master-viewport {
+  min-height: calc(100vh - 70px);
+  background-color: #121212;
+  color: #e0e0e0;
+  padding: 40px 24px;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+
+.checkout-stepper-head {
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .step-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 2;
+
+    .circle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #1a1a1a;
+      border: 2px solid #333333;
+      color: #888888;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    span {
+      font-size: 12px;
+      font-weight: 500;
+      color: #888888;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    &.active {
+      .circle {
+        border-color: #f43397;
+        color: #ffffff;
+        box-shadow: 0 0 15px rgba(244, 51, 151, 0.4);
+        background-color: #f43397;
+      }
+      span {
+        color: #ffffff;
+        font-weight: 600;
+      }
+    }
+
+    &.complete {
+      .circle {
+        border-color: #f43397;
+        background-color: #f43397;
+        color: #ffffff;
+      }
+      span {
+        color: #b0b0b0;
+      }
+    }
+  }
+
+  .step-line {
+    flex: 1;
+    height: 2px;
+    background-color: #2d2d2d;
+    margin: 0 -10px;
+    transform: translateY(-13px);
+    z-index: 1;
+    transition: background-color 0.4s ease;
+
+    &.filled {
+      background-color: #f43397;
+    }
+  }
+}
+
+.checkout-step-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.checkout-split-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 32px;
+  align-items: start;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.checkout-card {
+  background-color: #1a1a1a;
+  border: 1px solid #2d2d2d;
+  border-radius: 16px;
+  padding: 32px;
+
+  h3 {
+    margin: 0 0 24px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+  }
+}
