@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CheckoutService } from '../../services/checkout-service';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
@@ -22,13 +22,42 @@ export class OrderSuccess implements OnInit {
 
   estimatedDelivery = this.checkoutService.estimatedDelivery;
 
+  countdown = signal(5);
+
+  private intervalId?: ReturnType<typeof setInterval>;
+
+  startCountdown() {
+
+    this.intervalId = setInterval(() => {
+
+      this.countdown.update(value => value - 1);
+
+      if (this.countdown() === 0) {
+
+        clearInterval(this.intervalId);
+
+        this.continueShopping();
+
+      }
+
+    }, 1000);
+
+  }
+
   ngOnInit(): void {
+
+    this.startCountdown();
+
     if (!this.orderId()) {
       this.router.navigate(['/'])
     }
   }
 
   continueShopping() {
+
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
 
     this.checkoutService.orderId.set(null);
     this.checkoutService.orderDate.set(null);

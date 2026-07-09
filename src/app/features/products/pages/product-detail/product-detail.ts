@@ -3,6 +3,8 @@ import { Product } from '../../models/product.model';
 import { ProductService } from '../../services/product-service';
 import { switchMap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { DatePipe } from '@angular/common';
+
 
 
 @Component({

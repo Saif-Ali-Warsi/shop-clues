@@ -5,33 +5,33 @@
         <polyline points="20 6 9 17 4 12"></polyline>
       </svg>
     </div>
-    
+
     <h1>Thank You For Your Order!</h1>
     <p class="subtitle">Your payment was processed successfully and your order is confirmed.</p>
 
     @if(orderId()){
-      <div class="receipt-details-box">
-        <div class="receipt-row">
-          <span class="lbl">Order ID</span>
-          <span class="val order-id-text">#{{orderId()}}</span>
-        </div>
-        
-        <div class="receipt-row">
-          <span class="lbl">Order Date</span>
-          <span class="val">
-            {{ orderDate() | date: 'mediumDate' }} • {{ orderDate() | date: 'shortTime' }}
-          </span>
-        </div>
-        
-        <div class="receipt-row">
-          <span class="lbl">Estimated Delivery</span>
-          <span class="val delivery-highlight">
-            {{ estimatedDelivery() | date: 'longDate' }}
-          </span>
-        </div>
+    <div class="receipt-details-box">
+      <div class="receipt-row">
+        <span class="lbl">Order ID</span>
+        <span class="val order-id-text">#{{orderId()}}</span>
       </div>
-    }
 
+      <div class="receipt-row">
+        <span class="lbl">Order Date</span>
+        <span class="val">
+          {{ orderDate() | date: 'mediumDate' }} • {{ orderDate() | date: 'shortTime' }}
+        </span>
+      </div>
+
+      <div class="receipt-row">
+        <span class="lbl">Estimated Delivery</span>
+        <span class="val delivery-highlight">
+          {{ estimatedDelivery() | date: 'longDate' }}
+        </span>
+      </div>
+    </div>
+    }
+    <p>Redirecting to home in {{ countdown() }} seconds...</p>
     <button class="continue-shopping-btn" (click)="continueShopping()">
       Continue Shopping
     </button>

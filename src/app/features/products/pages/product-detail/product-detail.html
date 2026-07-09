@@ -1,44 +1,116 @@
 <section class="common-wrapper">
-@if(product(); as product){
-<div class="product-detail-container">
-  <div class="product-detail-layout">
-    
-    <div class="product-gallery">
-      <div class="image-wrapper">
-        <img [src]="product.thumbnail" [alt]="product.title" />
-        <span class="category-tag">{{ product.category }}</span>
-      </div>
-    </div>
-
-    <div class="product-info-panel">
-      <div class="brand-rating-row">
-        <span class="brand-name">{{ product.brand }}</span>
-        <div class="rating-badge">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="star-icon">
-            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
-          </svg>
-          <span>{{ product.rating }}</span>
+  @if(product(); as product) {
+    <div class="product-detail-container">
+      <div class="product-detail-layout">
+        
+        <div class="product-gallery-side">
+          <div class="main-image-card">
+            <img [src]="product.thumbnail" [alt]="product.title" />
+            <span class="stock-badge" [class.low-stock]="product.stock < 10">
+              In Stock ({{ product.stock }})
+            </span>
+          </div>
+          
+          @if(product.images && product.images.length > 0) {
+            <div class="thumbs-row">
+              @for(img of product.images; track $index) {
+                <div class="thumb-box" [class.active]="$first">
+                  <img [src]="img" alt="Gallery View" />
+                </div>
+              }
+            </div>
+          }
         </div>
-      </div>
 
-      <h1 class="product-title">{{ product.title }}</h1>
-      
-      <div class="price-tag">${{ product.price }}</div>
+        <div class="product-info-panel-side">
+          <div class="brand-breadcrumbs">
+            <span class="brand-lbl">{{ product.brand }}</span>
+            <span class="bread-sep">/</span>
+            <span class="category-lbl">{{ product.category }}</span>
+          </div>
 
-      <div class="divider"></div>
+          <h1 class="product-title">{{ product.title }}</h1>
+          
+          <div class="rating-row-container">
+            <div class="rating-badge-pill">
+              <span>{{ product.rating }}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="star-icon">
+                <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <span class="review-count-text">(54 Customer Reviews)</span>
+          </div>
 
-      <div class="description-section">
-        <h2>Description</h2>
-        <p>{{ product.description }}</p>
-      </div>
+          <div class="price-structure-card">
+            <div class="main-price-row">
+              <span class="current-price">${{ product.price }}</span>
+              <span class="discount-pill">{{ product.discountPercentage }}% OFF</span>
+            </div>
+            <p class="tax-info-note">Inclusive of all taxes</p>
+          </div>
 
-      <div class="action-row">
-        <button class="btn btn-primary">Add to Cart</button>
-        <button class="btn btn-secondary">Buy Now</button>
+          <div class="action-buttons-fixed-row">
+            <button class="action-btn buy-now-btn">Buy Now</button>
+            <button class="action-btn add-to-cart-btn">Add to Cart</button>
+          </div>
+
+          <div class="info-divider-line"></div>
+
+          <div class="technical-highlights-box">
+            <h3>Key Features</h3>
+            <div class="specs-grid-layout">
+              <div class="spec-item-node">
+                <span class="label">SKU</span>
+                <span class="value">8UR-AN9-45N-011</span>
+              </div>
+              <div class="spec-item-node">
+                <span class="label">Warranty</span>
+                <span class="value">1 year warranty</span>
+              </div>
+              <div class="spec-item-node">
+                <span class="label">Shipping</span>
+                <span class="value">Ships in 1 month</span>
+              </div>
+              <div class="spec-item-node">
+                <span class="label">Return Policy</span>
+                <span class="value">No return policy</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-divider-line"></div>
+
+          <div class="product-description-block">
+            <h3>Overview</h3>
+            <p>{{ product.description }}</p>
+          </div>
+
+          <div class="info-divider-line"></div>
+
+          <!-- <div class="customer-reviews-block">
+            <h3>Customer Feedback</h3>
+            <div class="reviews-stack-list">
+              @for(rev of product.reviews; track $index) {
+                <div class="user-review-card-item">
+                  <div class="review-top-meta">
+                    <span class="reviewer-name">{{ rev.reviewerName }}</span>
+                    <div class="user-given-stars">
+                      <span>{{ rev.rating }}</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="star-icon">
+                        <path d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <p class="review-comment-body">"{{ rev.comment }}"</p>
+                  <span class="review-date-stamp">{{ rev.date | date:'mediumDate' }}</span>
+                </div>
+              }
+            </div>
+          </div> -->
+
+        </div>
+
       </div>
     </div>
-
-  </div>
-</div>
-}
+  }
 </section>
