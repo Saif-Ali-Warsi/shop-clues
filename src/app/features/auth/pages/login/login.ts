@@ -3,6 +3,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth-service';
 import { LoginRequest } from '../../models/login-request.model';
 import { Router } from '@angular/router';
+import { NotificationService } from '../../../../shared/services/notification-service';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class Login {
 
+  private notification = inject(NotificationService)
   private fb = inject(FormBuilder)
   private authService = inject(AuthService);
   private router = inject(Router)
@@ -39,6 +41,8 @@ export class Login {
         localStorage.setItem('user', JSON.stringify(response))
 
         this.router.navigate(['/'])
+
+        this.notification.success('Login successful. Welcome back!');
       },
       error: (err) => {
         console.log(err)

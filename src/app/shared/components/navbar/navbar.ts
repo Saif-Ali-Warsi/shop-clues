@@ -5,6 +5,7 @@ import { AuthService } from '../../../features/auth/services/auth-service';
 import { ProductService } from '../../../features/products/services/product-service';
 import { Category } from '../../../features/products/models/category.model';
 import { Search } from '../../../features/products/components/search/search';
+import { NotificationService } from '../../services/notification-service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,6 +15,7 @@ import { Search } from '../../../features/products/components/search/search';
 })
 export class Navbar implements OnInit {
 
+  private notification = inject(NotificationService);
   private cartService = inject(CartService);
   authService = inject(AuthService);
   private productService = inject(ProductService);
@@ -45,7 +47,7 @@ export class Navbar implements OnInit {
     if (!container) return;
 
     // Show left button only if we have scrolled away from the absolute left (0)
-    this.showLeftButton.set(container.scrollLeft > 5); 
+    this.showLeftButton.set(container.scrollLeft > 5);
 
     // Show right button only if there is remaining space left to scroll
     const hasMoreToScroll = container.scrollLeft + container.clientWidth < container.scrollWidth - 5;
@@ -56,7 +58,7 @@ export class Navbar implements OnInit {
     const container = this.categoryContainer()?.nativeElement;
     if (!container) return;
 
-    const scrollAmount = 200; 
+    const scrollAmount = 200;
 
     if (direction === 'left') {
       container.scrollTo({
@@ -75,6 +77,7 @@ export class Navbar implements OnInit {
 
   logout() {
     this.authService.logout();
+    this.notification.success('Logged out successfully.');
   }
 
   loadCategories() {
