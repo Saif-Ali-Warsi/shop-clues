@@ -1,10 +1,10 @@
 import { Component, inject, output } from '@angular/core';
 import { CheckoutService } from '../../services/checkout-service';
-import { ɵInternalFormsSharedModule } from "@angular/forms";
+import { TotalQuotation } from '../total-quotation/total-quotation';
 
 @Component({
   selector: 'app-payment-method',
-  imports: [ɵInternalFormsSharedModule],
+  imports: [TotalQuotation],
   templateUrl: './payment-method.html',
   styleUrl: './payment-method.scss',
 })
@@ -13,6 +13,8 @@ export class PaymentMethod {
   private checkoutService = inject(CheckoutService);
 
   continue = output<void>();
+
+  back = output<void>();
 
   onPaymentChange(event: Event) {
 
@@ -31,6 +33,10 @@ export class PaymentMethod {
 
     this.continue.emit();
 
+  }
+
+  goBack() {
+    this.back.emit();
   }
 
 }

@@ -1,10 +1,11 @@
 import { Component, inject, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CheckoutService } from '../../services/checkout-service';
+import { TotalQuotation } from '../total-quotation/total-quotation';
 
 @Component({
   selector: 'app-address-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TotalQuotation],
   templateUrl: './address-form.html',
   styleUrl: './address-form.scss',
 })

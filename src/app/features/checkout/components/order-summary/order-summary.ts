@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, output } from '@angular/core';
 import { CheckoutService } from '../../services/checkout-service';
 import { Router } from '@angular/router';
 import { CartService } from '../../../cart/services/cart-service';
@@ -17,13 +17,15 @@ export class OrderSummary {
 
   cartItems = this.cartService.cartItems;
 
-cartTotal = this.cartService.totalPrice;
+  cartTotal = this.cartService.totalPrice;
 
-address = this.checkoutService.address;
+  address = this.checkoutService.address;
 
-paymentMethod = this.checkoutService.paymentMethod;
+  paymentMethod = this.checkoutService.paymentMethod;
 
   isPlacingOrder = signal(false);
+
+    back = output<void>();
 
   placeOrder() {
     if (!this.checkoutService.address()) {
@@ -62,8 +64,10 @@ paymentMethod = this.checkoutService.paymentMethod;
 
     }, 2000);
 
-    console.log(this.checkoutService.address());
+  }
 
+    goBack() {
+    this.back.emit();
   }
 
 }

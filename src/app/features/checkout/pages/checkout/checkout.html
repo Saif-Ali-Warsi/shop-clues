@@ -4,10 +4,10 @@
     }
 
     @if(currentStep() === 'payment'){
-    <app-payment-method (continue)="goToSummary()"></app-payment-method>
+    <app-payment-method (back)="goToAddress()" (continue)="goToSummary()"></app-payment-method>
     }
 
     @if(currentStep() === 'summary'){
-    <app-order-summary></app-order-summary>
+    <app-order-summary (back)="goToPayment()"></app-order-summary>
     }
 </div>

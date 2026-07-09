@@ -17,8 +17,12 @@ export class Checkout {
     this.currentStep.set('payment')
   }
 
-  goToSummary(){
+  goToSummary() {
     this.currentStep.set('summary')
+  }
+
+  goToAddress() {
+    this.currentStep.set('address')
   }
 
 }

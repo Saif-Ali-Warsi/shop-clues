@@ -24,6 +24,11 @@
 <p>Shipping: Free</p>
 
 <p>Total: ₹{{cartTotal()}}</p>
+
+  <button (click)="goBack()">
+            Back
+        </button>
+
 <button
     [disabled]="isPlacingOrder()"
     (click)="placeOrder()">
