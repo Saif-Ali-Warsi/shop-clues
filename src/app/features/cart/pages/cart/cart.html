@@ -9,7 +9,7 @@
 
       <div class="cart-item-details">
         <h3>{{ item.title }}</h3>
-        <p class="price">Price: ${{ item.price }}</p>
+        <p class="price">Price: {{ item.price }}</p>
         <p class="quantity">Quantity: {{ item.quantity }}</p>
       </div>
 
@@ -35,7 +35,7 @@
 
     <div class="summary-row">
       <span>Total Price</span>
-      <span>{{cartTotal()}}</span>
+      <span>{{cartTotal() | number: '1.2-2'}}</span>
     </div>
 
     <div class="summary-row">
@@ -52,7 +52,7 @@
 
     <div class="summary-row total-row">
       <span>Estimated Total</span>
-      <span>{{cartTotal()}}</span>
+      <span>{{cartTotal() | number: '1.2-2'}}</span>
     </div>
 
     <button class="btn-checkout" (click)="proceedCheckout()">Proceed to Checkout</button>

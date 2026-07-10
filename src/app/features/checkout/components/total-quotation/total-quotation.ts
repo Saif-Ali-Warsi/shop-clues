@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { CartService } from '../../../cart/services/cart-service';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-total-quotation',
-  imports: [],
+  imports: [DecimalPipe],
   templateUrl: './total-quotation.html',
   styleUrl: './total-quotation.scss',
 })

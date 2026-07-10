@@ -9,17 +9,17 @@
 
     <div class="quote-row">
       <span>Total Price</span>
-      <span class="val">₹{{cartTotal()}}</span>
+      <span class="val">{{cartTotal() | number: '1.2-2'}}</span>
     </div>
 
     <div class="quote-row">
       <span>Total Discount</span>
-      <span class="val discount-text">-₹45</span>
+      <span class="val discount-text">-45</span>
     </div>
 
     <div class="quote-row">
       <span>Total Tax</span>
-      <span class="val">₹3,545</span>
+      <span class="val">3,545</span>
     </div>
   </div>
 
@@ -27,6 +27,6 @@
 
   <div class="quote-row final-total-row">
     <span>Estimated Total</span>
-    <span class="price">₹{{cartTotal()}}</span>
+    <span class="price">{{cartTotal() | number: '1.2-2'}}</span>
   </div>
 </div>

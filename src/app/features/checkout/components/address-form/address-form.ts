@@ -2,6 +2,7 @@ import { Component, inject, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CheckoutService } from '../../services/checkout-service';
 import { TotalQuotation } from '../total-quotation/total-quotation';
+import { NotificationService } from '../../../../shared/services/notification-service';
 
 @Component({
   selector: 'app-address-form',
@@ -14,7 +15,9 @@ export class AddressForm {
   private fb = inject(FormBuilder);
   private checkoutService = inject(CheckoutService);
 
-  continue = output<void>()
+  private notification = inject(NotificationService);
+
+  continue = output<void>();
 
   addressForm = this.fb.group({
     fullName: ['', Validators.required],
@@ -37,6 +40,8 @@ export class AddressForm {
     )
 
     this.continue.emit();
+
+    this.notification.success('Address saved')
   }
 
 }

@@ -3,11 +3,13 @@ import { CheckoutService } from '../../services/checkout-service';
 import { Router } from '@angular/router';
 import { CartService } from '../../../cart/services/cart-service';
 import { UpperCasePipe } from '@angular/common';
+import { NotificationService } from '../../../../shared/services/notification-service';
+import { DecimalPipe } from '@angular/common';
 
 
 @Component({
   selector: 'app-order-summary',
-  imports: [UpperCasePipe],
+  imports: [UpperCasePipe, DecimalPipe],
   templateUrl: './order-summary.html',
   styleUrl: './order-summary.scss',
 })
@@ -16,6 +18,8 @@ export class OrderSummary {
   private checkoutService = inject(CheckoutService);
   private cartService = inject(CartService);
   private router = inject(Router);
+
+  private notification = inject(NotificationService);
 
   cartItems = this.cartService.cartItems;
 
@@ -27,16 +31,16 @@ export class OrderSummary {
 
   isPlacingOrder = signal(false);
 
-    back = output<void>();
+  back = output<void>();
 
   placeOrder() {
     if (!this.checkoutService.address()) {
-      alert('Please fill the address');
+      this.notification.error('Please complete your address.')
       return;
     }
 
     if (!this.checkoutService.paymentMethod()) {
-      alert('Please select a payment method.');
+      this.notification.error('Please select a payment method.')
       return;
     }
 
@@ -64,11 +68,13 @@ export class OrderSummary {
 
       this.router.navigate(['/order-success']);
 
+      this.notification.success('Order placed successfully.')
+
     }, 2000);
 
   }
 
-    goBack() {
+  goBack() {
     this.back.emit();
   }
 

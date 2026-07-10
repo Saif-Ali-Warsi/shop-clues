@@ -5,6 +5,7 @@ import { ProductCard } from '../../components/product-card/product-card';
 import { ActivatedRoute } from '@angular/router';
 import { FilterSidebar } from '../../components/filter-sidebar/filter-sidebar';
 import { Router } from '@angular/router';
+import { NotificationService } from '../../../../shared/services/notification-service';
 
 @Component({
   selector: 'app-product-list',
@@ -17,6 +18,8 @@ export class ProductList implements OnInit {
   private productService = inject(ProductService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+
+  private notification = inject(NotificationService);
 
   isLoading = false;
   products = signal<Product[]>([]);
@@ -38,7 +41,7 @@ export class ProductList implements OnInit {
       this.sort.set(sort);
 
       this.loadProducts();
-    })
+    });
   }
 
   loadProducts() {
@@ -102,6 +105,10 @@ export class ProductList implements OnInit {
 
 
         this.products.set(products);
+      },
+
+      error: () => {
+        this.notification.error('Unable to load products.');
       }
     });
 

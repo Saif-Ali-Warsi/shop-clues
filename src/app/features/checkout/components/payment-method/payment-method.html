@@ -3,7 +3,7 @@
     <h3>Select Payment Method</h3>
     
     <div class="payment-selection-column">
-      <div class="payment-row-card" [class.selected]="true">
+      <div class="payment-row-card">
         <input type="radio" name="payment" id="cod" value="cod" checked (change)="onPaymentChange($event)">
         <label for="cod">
           <span class="title">Cash On Delivery (COD)</span>

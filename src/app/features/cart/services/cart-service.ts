@@ -1,6 +1,7 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, inject } from '@angular/core';
 import { CartItem } from '../models/cart.model';
 import { Product } from '../../products/models/product.model';
+import { NotificationService } from '../../../shared/services/notification-service';
 
 @Injectable({
   providedIn: 'root',
@@ -8,6 +9,8 @@ import { Product } from '../../products/models/product.model';
 export class CartService {
 
   private readonly CART_KEY = 'cart';
+
+  private notification = inject(NotificationService);
 
   cartItems = signal<CartItem[]>(this.getCartItems());
 
@@ -52,6 +55,8 @@ export class CartService {
 
     this.saveCartItems(cartItems);
     this.cartItems.set(cartItems);
+
+    this.notification.success(`${product.title} added to cart.`);
   }
 
   increaseQuantity(productId: number) {
@@ -69,6 +74,8 @@ export class CartService {
 
     this.saveCartItems(cartItems);
     this.cartItems.set(cartItems);
+
+    this.notification.info('Quantity incresed.')
   }
 
   decreaseQuantity(productId: number) {
@@ -98,6 +105,8 @@ export class CartService {
     this.saveCartItems(cartItems);
     this.cartItems.set(cartItems);
 
+    this.notification.info('Quantity decreased.')
+
   }
 
   removeItem(productId: number) {
@@ -111,6 +120,8 @@ export class CartService {
     this.saveCartItems(updatedCart);
     this.cartItems.set(updatedCart);
 
+    this.notification.warning('Product removed from cart.')
+
   }
 
   totalPrice = computed(() => {
@@ -122,6 +133,8 @@ export class CartService {
   clearCart() {
     localStorage.removeItem('cart');
     this.cartItems.set([]);
+
+    this.notification.warning('Cart cleared.')
   }
 
 }

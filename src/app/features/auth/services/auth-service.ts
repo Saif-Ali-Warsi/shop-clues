@@ -29,7 +29,7 @@ export class AuthService {
     
     localStorage.removeItem('user');
 
-    this.cartService.clearCart();
+    // this.cartService.clearCart();
 
     this.router.navigate(['/login']);
   }

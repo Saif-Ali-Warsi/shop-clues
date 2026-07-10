@@ -14,10 +14,13 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideToastr({
       timeOut: 3000,
-      positionClass: 'toast-top-right',
-      preventDuplicates: true,
       progressBar: true,
-      closeButton: true
+      progressAnimation: 'decreasing',
+      closeButton: true,
+      preventDuplicates: true,
+      newestOnTop: true,
+      easeTime: 300,
+      tapToDismiss: true
     }),
     provideRouter(routes),
     provideHttpClient(withFetch(), withInterceptors(

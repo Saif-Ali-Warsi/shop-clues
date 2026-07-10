@@ -2,10 +2,14 @@ import { HttpInterceptorFn, HttpErrorResponse } from '@angular/common/http';
 import { catchError, throwError } from 'rxjs';
 import { AuthService } from '../../features/auth/services/auth-service';
 import { inject } from '@angular/core';
+import { NotificationService } from '../../shared/services/notification-service';
+import { Router } from '@angular/router';
 
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
 
 const authService = inject(AuthService);
+const router = inject(Router);
+const notification = inject(NotificationService);
 
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
@@ -17,8 +21,8 @@ const authService = inject(AuthService);
           break;
 
         case 401:
-          console.error('Unauthorized');
           authService.logout();
+          console.error('Unauthorized');
           break;
 
         case 403:
