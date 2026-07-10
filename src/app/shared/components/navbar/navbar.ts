@@ -1,5 +1,4 @@
-import { Component, OnInit, inject, signal, ElementRef, viewChild } from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Component, OnInit, inject, signal, ElementRef, viewChild, HostListener } from '@angular/core'; import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CartService } from '../../../features/cart/services/cart-service';
 import { AuthService } from '../../../features/auth/services/auth-service';
 import { ProductService } from '../../../features/products/services/product-service';
@@ -31,6 +30,11 @@ export class Navbar implements OnInit {
   categories: Category[] = [];
 
   search = '';
+
+  @HostListener('window:resize')
+  onWindowResize() {
+    this.updateButtonVisibility();
+  }
 
   ngOnInit(): void {
     this.loadCategories();
