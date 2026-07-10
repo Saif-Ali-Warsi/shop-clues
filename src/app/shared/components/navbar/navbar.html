@@ -1,8 +1,16 @@
 <header class="main-header">
   <div class="top-nav">
     <div class="logo-section">
+      <button class="menu-toggle" (click)="toggleMenu()" aria-label="Toggle menu">
+        @if (isMenuOpen()) {
+        <span class="color-danger">&#x2715;</span>
+        } @else {
+        &#x2630;
+        }
+      </button>
+
       <a routerLink="/" class="logo">
-        <img src="https://www.image2url.com/r2/default/images/1783439341658-a4ad533f-a857-40c0-8368-136beb41c825.png" alt="logo">
+        <h1 class="logo-as-text">Eshop Clues</h1>
       </a>
     </div>
 
@@ -14,40 +22,52 @@
 
     <div class="nav-links">
       @if (!authService.isLoggedIn()) {
-        <a routerLink="/login" class="nav-item">Login</a>
+      <a routerLink="/login" class="nav-item" title="Login">
+        <img src="https://www.image2url.com/r2/default/images/1783703739131-f40e3985-142f-43b7-b455-9f6ddf4bc66c.png"
+          alt="Login" class="nav-icon">
+      </a>
       } @else {
-        <a routerLink="/cart" class="nav-item">
-          <span class="nav-text">Cart</span>
-          <span class="badge">{{cartCount()}}</span>
-        </a>
-        <a routerLink="/profile" class="nav-item">
-          <span class="nav-text">Profile</span>
-        </a>
-        <a (click)="logout()" class="nav-item logout-btn">
-          <span class="nav-text">Logout</span>
-        </a>
+      <a routerLink="/cart" class="nav-item cart-item" title="Cart">
+        <img src="https://www.image2url.com/r2/default/images/1783704526708-b23db095-0dcb-4265-b200-e0a58e3e17cb.png"
+          alt="Cart" class="nav-icon">
+        <span class="badge">{{cartCount()}}</span>
+      </a>
+
+      <a routerLink="/profile" class="nav-item" title="Profile">
+        <img src="https://www.image2url.com/r2/default/images/1783703739065-3c405044-d940-475f-bb47-b1df74b858c6.png"
+          alt="Profile" class="nav-icon">
+      </a>
+
+      <a (click)="logout()" class="nav-item" title="Logout">
+        <img src="https://www.image2url.com/r2/default/images/1783703739065-c8b07e5a-dbf9-48bb-9b16-cea3ae4bbf7e.png"
+          alt="Logout" class="nav-icon">
+      </a>
       }
     </div>
   </div>
 
-  <nav class="category-nav">
-    <div class="category-list" #categoryContainer (scroll)="updateButtonVisibility()">
+  <nav class="category-nav" [class.open]="isMenuOpen()">
+    <div class="category-list" #categoryContainer>
       @if (showLeftButton()) {
-        <button class="nav-btn left" (click)="scrollTabs('left')">
-          &#10094;
-        </button>
+      <button class="nav-btn left" (click)="scrollTabs('left')">
+        &#10094;
+      </button>
       }
 
       @for(category of categories; track category.slug){
-        <a class="category-item" [routerLink]="['products']"
-          [queryParams]="{categories: category.slug}">{{category.name}}</a>
+      <a class="category-item" [routerLink]="['products']" [queryParams]="{categories: category.slug}"
+        (click)="closeMenu()">{{category.name}}</a>
       }
-      
+
       @if (showRightButton()) {
-        <button class="nav-btn right" (click)="scrollTabs('right')">
-          &#10095;
-        </button>
+      <button class="nav-btn right" (click)="scrollTabs('right')">
+        &#10095;
+      </button>
       }
     </div>
   </nav>
+
+  @if (isMenuOpen()) {
+  <div class="sidebar-overlay" (click)="closeMenu()"></div>
+  }
 </header>

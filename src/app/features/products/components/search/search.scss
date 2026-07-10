@@ -1,21 +1,18 @@
 
-$theme-color: #aab2ff;
-
 input {
   font-size: 14px;
-  color: $theme-color;
+  color: #12daa8;
   width: calc(100% - 20px);
   background-color: unset;
   height: 26px;
   padding: 8px 10px;
-  border: 1px solid #525681;
+  border: 1px solid #12daa8;
   border-radius: 4px;
 }
 
-
 @media (max-width: 480px) {
-  input{
-      font-size: 13px;
+  input {
+    font-size: 13px;
     height: 20px;
   }
 }

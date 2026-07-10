@@ -1,4 +1,5 @@
-import { Component, OnInit, inject, signal, ElementRef, viewChild, HostListener } from '@angular/core'; import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Component, OnInit, inject, signal, ElementRef, viewChild } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CartService } from '../../../features/cart/services/cart-service';
 import { AuthService } from '../../../features/auth/services/auth-service';
 import { ProductService } from '../../../features/products/services/product-service';
@@ -13,7 +14,6 @@ import { NotificationService } from '../../services/notification-service';
   styleUrl: './navbar.scss',
 })
 export class Navbar implements OnInit {
-
   private notification = inject(NotificationService);
   private cartService = inject(CartService);
   authService = inject(AuthService);
@@ -25,35 +25,32 @@ export class Navbar implements OnInit {
 
   showLeftButton = signal(false);
   showRightButton = signal(true);
+  isMenuOpen = signal(false); // Manages sidebar state
 
   cartCount = this.cartService.cartCount;
   categories: Category[] = [];
-
   search = '';
-
-  @HostListener('window:resize')
-  onWindowResize() {
-    this.updateButtonVisibility();
-  }
 
   ngOnInit(): void {
     this.loadCategories();
-
     this.route.queryParams.subscribe(params => {
       this.search = params['search'] ?? '';
-    })
+    });
   }
 
+  toggleMenu() {
+    this.isMenuOpen.update(val => !val);
+  }
 
-  // Method to check scroll boundaries
+  closeMenu() {
+    this.isMenuOpen.set(false);
+  }
+
   updateButtonVisibility() {
     const container = this.categoryContainer()?.nativeElement;
     if (!container) return;
 
-    // Show left button only if we have scrolled away from the absolute left (0)
     this.showLeftButton.set(container.scrollLeft > 5);
-
-    // Show right button only if there is remaining space left to scroll
     const hasMoreToScroll = container.scrollLeft + container.clientWidth < container.scrollWidth - 5;
     this.showRightButton.set(hasMoreToScroll);
   }
@@ -63,17 +60,10 @@ export class Navbar implements OnInit {
     if (!container) return;
 
     const scrollAmount = 200;
-
     if (direction === 'left') {
-      container.scrollTo({
-        left: container.scrollLeft - scrollAmount,
-        behavior: 'smooth'
-      });
+      container.scrollTo({ left: container.scrollLeft - scrollAmount, behavior: 'smooth' });
     } else {
-      container.scrollTo({
-        left: container.scrollLeft + scrollAmount,
-        behavior: 'smooth'
-      });
+      container.scrollTo({ left: container.scrollLeft + scrollAmount, behavior: 'smooth' });
     }
 
     setTimeout(() => this.updateButtonVisibility(), 300);
@@ -87,22 +77,15 @@ export class Navbar implements OnInit {
   loadCategories() {
     this.productService.getCategories().subscribe({
       next: (categories) => {
-        this.categories = categories
+        this.categories = categories;
       }
-    })
+    });
   }
 
   onSearch(query: string) {
     this.router.navigate(
       ['/products'],
-      {
-        queryParams: {
-          search: query
-        },
-        queryParamsHandling: 'merge'
-      }
-    )
+      { queryParams: { search: query }, queryParamsHandling: 'merge' }
+    );
   }
-
-
 }
