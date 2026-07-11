@@ -1,8 +1,23 @@
+<div class="mobile-filter-bar">
+    <button (click)="openFilters()">
+        <img src="https://www.image2url.com/r2/default/images/1783792678538-96fb6181-37e2-460c-aa65-e946d1781a4d.png"
+            alt=""> <span>
+            Choose Filters
+        </span>
+    </button>
+</div>
+
+
 <section class="product-list-wrapper">
 
-    <div class="sidebar-container">
+    @if(filterOpen()){
+    <div class="sidebar-backdrop" (click)="closeFilters()">
+    </div>
+    }
+
+    <div class="sidebar-container" [class.open]="filterOpen()">
         <app-filter-sidebar (sortChanged)="onSortChanged($event)" [checkedCategories]="selectedCategories()"
-            (categoriesChanged)="onCategoriesChanged($event)">
+            (categoriesChanged)="onCategoriesChanged($event)" (filterClosed)="closeFilters()">
         </app-filter-sidebar>
     </div>
 
@@ -20,7 +35,6 @@
             <p>No products found</p>
         </div>
         }
-
         }
     </div>
 

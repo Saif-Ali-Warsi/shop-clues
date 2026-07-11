@@ -26,6 +26,7 @@ export class ProductList implements OnInit {
   searchTerm = signal('');
   selectedCategories = signal<string[]>([]);
   sort = signal('relevance');
+  filterOpen = signal(false);
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -42,6 +43,20 @@ export class ProductList implements OnInit {
 
       this.loadProducts();
     });
+  }
+
+  openFilters() {
+    this.filterOpen.set(true);
+        if (this.filterOpen()) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+  }
+
+  closeFilters() {
+    this.filterOpen.set(false);
+       document.body.classList.remove('no-scroll');
   }
 
   loadProducts() {

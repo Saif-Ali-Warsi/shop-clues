@@ -5,10 +5,6 @@
   color: #e0e0e0;
 }
 
-body.no-scroll {
-  overflow: hidden;
-}
-
 .main-header {
   border-bottom: 1px solid #2d2d2d;
   background-color: #1a1a1a;
@@ -193,7 +189,7 @@ body.no-scroll {
 
   .menu-toggle {
     display: block;
-    z-index: 1001;
+    z-index: 1000;
   }
 
   .logo-section {
@@ -226,7 +222,7 @@ body.no-scroll {
     padding: 30px 24px 24px 24px;
     flex-direction: column;
     align-items: flex-start;
-    z-index: 1000;
+    z-index: 999;
     transition: left 0.3s ease-in-out;
     box-shadow: 4px 0 15px rgba(0, 0, 0, 0.5);
 
@@ -272,6 +268,6 @@ body.no-scroll {
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(2px);
-    z-index: 999;
+    z-index: 998;
   }
 }

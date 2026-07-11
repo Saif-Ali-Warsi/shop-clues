@@ -22,6 +22,8 @@ export class FilterSidebar implements OnInit {
 
   sortChanged = output<string>();
 
+  filterClosed = output<void>();
+
 
   ngOnInit(): void {
     this.loadCategories()
@@ -55,6 +57,10 @@ export class FilterSidebar implements OnInit {
     const radio = event.target as HTMLInputElement;
 
     this.sortChanged.emit(radio.value)
+  }
+
+  closeFilter() {
+    this.filterClosed.emit()
   }
 
 }
