@@ -47,10 +47,10 @@
 
     &.active {
       .circle {
-        border-color: #f43397;
+        border-color: #12daa8;
         color: #ffffff;
         box-shadow: 0 0 15px rgba(244, 51, 151, 0.4);
-        background-color: #f43397;
+        background-color: #12daa8;
       }
       span {
         color: #ffffff;
@@ -60,8 +60,8 @@
 
     &.complete {
       .circle {
-        border-color: #f43397;
-        background-color: #f43397;
+        border-color: #12daa8;
+        background-color: #12daa8;
         color: #ffffff;
       }
       span {
@@ -80,7 +80,7 @@
     transition: background-color 0.4s ease;
 
     &.filled {
-      background-color: #f43397;
+      background-color: #12daa8;
     }
   }
 }
@@ -105,13 +105,13 @@
   background-color: #1a1a1a;
   border: 1px solid #2d2d2d;
   border-radius: 16px;
-  padding: 32px;
+  padding: 18px;
 
   h3 {
     margin: 0 0 24px 0;
     font-size: 18px;
     font-weight: 600;
-    color: #ffffff;
+    color: #12daa8;
     letter-spacing: 0.5px;
   }
 }

@@ -44,12 +44,13 @@
       height: 10px;
       border-radius: 50%;
       transform: scale(0);
-      background-color: #f43397;
+      background-color: #12daa8;
       transition: transform 0.15s ease-in-out;
     }
 
     &:checked {
-      border-color: #f43397;
+      border-color: #12daa8;
+      
       &::before {
         transform: scale(1);
       }

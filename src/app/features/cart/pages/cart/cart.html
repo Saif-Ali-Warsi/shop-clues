@@ -4,13 +4,15 @@
   <!-- Left Side: Cart Items List -->
   <div class="cart-container">
     @for(item of cartItem(); track item.id){
-    <div class="cart-item">
-      <img [src]="item.thumbnail" [alt]="item.title" class="cart-item-img">
+    <div class="cart-section">
+      <div class="cart-item">
+        <img [src]="item.thumbnail" [alt]="item.title" class="cart-item-img">
 
-      <div class="cart-item-details">
-        <h3>{{ item.title }}</h3>
-        <p class="price">Price: {{ item.price }}</p>
-        <p class="quantity">Quantity: {{ item.quantity }}</p>
+        <div class="cart-item-details">
+          <h3>{{ item.title }}</h3>
+          <p class="price">Price: {{ item.price }}</p>
+          <p class="quantity">Quantity: {{ item.quantity }}</p>
+        </div>
       </div>
 
       <div class="cart-item-actions">
@@ -21,6 +23,7 @@
         <button class="btn-remove" (click)="removeItem(item.id)">Remove</button>
       </div>
     </div>
+
     }
   </div>
 

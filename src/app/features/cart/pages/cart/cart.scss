@@ -3,33 +3,37 @@
   gap: 24px;
   align-items: flex-start;
   max-width: 1200px;
-  margin: 20px auto;
+  margin: 30px auto;
   padding: 0 20px;
   font-family: sans-serif;
 }
 
 .cart-container {
   flex: 1;
-  background-color: #121212;
   color: #e0e0e0;
-  padding: 20px;
   border-radius: 8px;
   margin: 0;
+}
+
+.cart-section {
+  background-color: #1e1e1e;
+  border: 1px solid #2d2d2d;
+  padding: 16px;
+  margin-bottom: 20px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .cart-item {
   display: flex;
   align-items: center;
-  background-color: #1e1e1e;
-  border: 1px solid #2d2d2d;
   border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 16px;
   gap: 20px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
 }
 
-.cart-item:hover {
+.cart-section:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
@@ -65,9 +69,8 @@
 
 .cart-item-actions {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
   gap: 12px;
+  margin: 15px 0 0px;
 }
 
 .qty-controls {
@@ -88,7 +91,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .btn-qty:hover {
@@ -107,7 +112,10 @@
   min-width: auto;
   height: auto;
   cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .btn-remove:hover {
@@ -172,7 +180,7 @@
 
 .btn-checkout {
   width: 100%;
-  background-color: #00adb5;
+  background-color: #12daa8;
   color: #ffffff;
   border: none;
   border-radius: 6px;
@@ -184,7 +192,7 @@
 }
 
 .btn-checkout:hover {
-  background-color: #008c93;
+  background-color: #12daa8;
 }
 
 .empty-cart {
@@ -202,7 +210,7 @@
   .cart-layout-wrapper {
     flex-direction: column;
   }
-  
+
   .cart-summary-panel {
     width: 100%;
     box-sizing: border-box;

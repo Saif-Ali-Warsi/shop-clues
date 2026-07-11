@@ -1,11 +1,10 @@
 .login-page-container {
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh - 250px);
   background-color: #121212;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 24px;
-  font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
 }
 
@@ -15,7 +14,7 @@
   border-radius: 16px;
   width: 100%;
   max-width: 420px;
-  padding: 40px 32px;
+  padding: 20px 22px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
 }
 
@@ -26,7 +25,7 @@
   .brand-logo {
     font-size: 28px;
     font-weight: 700;
-    color: #f43397;
+    color: #12daa8;
     margin-bottom: 16px;
     letter-spacing: -0.5px;
   }
@@ -35,7 +34,7 @@
     margin: 0 0 8px 0;
     font-size: 22px;
     font-weight: 600;
-    color: #ffffff;
+    color: #12daa8;
   }
 
   p {
@@ -48,19 +47,19 @@
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 .form-field {
   display: flex;
   flex-direction: column;
-  gap: 8px;
 
   label {
     font-size: 12px;
     font-weight: 600;
-    color: #b0b0b0;
-    text-transform: uppercase;
+    color: #ffffff;
+    margin: 0 0 10px;
+    text-transform: capitalize;
     letter-spacing: 0.8px;
   }
 }
@@ -85,7 +84,7 @@
     }
 
     &:focus {
-      border-color: #f43397;
+      border-color: #12daa8;
       background-color: #1c1c1c;
       box-shadow: 0 0 0 3px rgba(244, 51, 151, 0.15);
     }
@@ -98,7 +97,7 @@
 
 .submit-btn {
   width: 100%;
-  background: linear-gradient(45deg, #f43397, #d01c7a);
+  background: linear-gradient(45deg, #12daa8, #12daa8);
   color: #ffffff;
   border: none;
   border-radius: 8px;
