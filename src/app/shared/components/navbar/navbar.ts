@@ -40,10 +40,16 @@ export class Navbar implements OnInit {
 
   toggleMenu() {
     this.isMenuOpen.update(val => !val);
+      if (this.isMenuOpen()) {
+    document.body.classList.add('no-scroll');
+  } else {
+    document.body.classList.remove('no-scroll');
+  }
   }
 
   closeMenu() {
     this.isMenuOpen.set(false);
+    document.body.classList.remove('no-scroll');
   }
 
   updateButtonVisibility() {

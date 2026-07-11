@@ -10,4 +10,14 @@ export interface Product {
     brand: string;
     thumbnail: string;
     images: string[];
+    sku: string;
+    warrantyInformation: string;
+    returnPolicy: string;
+    reviews: {
+        rating: number;
+        comment: string;
+        date: string;
+        reviewerName: string;
+        reviewerEmail: string;
+    }[];
 }

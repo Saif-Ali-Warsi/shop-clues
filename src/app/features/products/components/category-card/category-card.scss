@@ -117,20 +117,18 @@
     }
 
     &__grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.75rem 1rem;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: stretch;
+      gap: 20px;
     }
   }
 
   .category-card {
-    &__image {
-      width: 125px;
-      height: 125px;
+    height: 100%;
 
-      img {
-        max-width: 72%;
-        max-height: 72%;
-      }
+    &__image {
+      width: 90px;
+      height: 90px;
     }
 
     h3 {

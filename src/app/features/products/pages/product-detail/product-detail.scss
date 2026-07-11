@@ -1,9 +1,8 @@
 .product-detail-container {
+  padding: 30px 20px;
   min-height: 100vh;
   color: #e0e0e0;
-  padding: 40px 24px;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
 }
 
 .product-detail-layout {
@@ -97,8 +96,9 @@
         object-fit: contain;
       }
 
-      &:hover, &.active {
-        border-color: #f43397;
+      &:hover,
+      &.active {
+        border-color: #12daa8;
         background-color: #202020;
       }
     }
@@ -120,7 +120,7 @@
     margin-bottom: 12px;
 
     .brand-lbl {
-      color: #f43397;
+      color: #12daa8;
     }
 
     .bread-sep {
@@ -174,10 +174,6 @@
   }
 
   .price-structure-card {
-    background-color: #1a1a1a;
-    border: 1px solid #2d2d2d;
-    border-radius: 12px;
-    padding: 24px;
     margin-bottom: 32px;
 
     .main-price-row {
@@ -192,10 +188,8 @@
       }
 
       .discount-pill {
-        background-color: rgba(244, 51, 151, 0.12);
-        border: 1px solid rgba(244, 51, 151, 0.25);
-        color: #f43397;
-        font-size: 13px;
+        color: #12daa8;
+        font-size: 1rem;
         font-weight: 700;
         padding: 4px 12px;
         border-radius: 6px;
@@ -226,7 +220,7 @@
     }
 
     .buy-now-btn {
-      background: linear-gradient(45deg, #f43397, #d01c7a);
+      background: linear-gradient(45deg, #12daa8, #12daa8);
       color: #ffffff;
       box-shadow: 0 4px 14px rgba(244, 51, 151, 0.3);
 
@@ -238,8 +232,8 @@
 
     .add-to-cart-btn {
       background-color: transparent;
-      border: 1px solid #444444;
-      color: #ffffff;
+      border: 1px solid #12daa8;
+      color: #12daa8;
 
       &:hover {
         background-color: #202020;
