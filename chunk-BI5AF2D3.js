@@ -1,0 +1,1 @@
+import{P as n,fa as e}from"./chunk-M77RDG2N.js";var a=class t{address=e(null);paymentMethod=e("");orderId=e(null);orderDate=e(null);estimatedDelivery=e(null);static \u0275fac=function(d){return new(d||t)};static \u0275prov=n({token:t,factory:t.\u0275fac,providedIn:"root"})};export{a};
