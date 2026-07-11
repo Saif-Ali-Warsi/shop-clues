@@ -1,6 +1,4 @@
 import { Component, input } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
 
 interface Category {
   title: string;
@@ -10,7 +8,7 @@ interface Category {
 
 @Component({
   selector: 'app-category-card',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './category-card.html',
   styleUrl: './category-card.scss',
 })

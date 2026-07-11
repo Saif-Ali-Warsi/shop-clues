@@ -1,7 +1,7 @@
 @use 'ngx-toastr/toastr';
 
 $theme-color: #aab2ff;
-$dark-theme-color: #262e2e;
+$dark-theme-color: #000000;
 $white-color: #ffffff;
 $error-color: #ff8b8b;
 
@@ -18,7 +18,7 @@ body {
 }
 
 .view-port-limit {
-  max-width: 1500px;
+  max-width: 1650px;
   margin: auto;
 }
 

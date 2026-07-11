@@ -4,10 +4,11 @@ import { RouterLink } from '@angular/router';
 import { CartService } from '../../../cart/services/cart-service';
 import { AuthService } from '../../../auth/services/auth-service';
 import { Router } from '@angular/router';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-product-card',
-  imports: [RouterLink],
+  imports: [RouterLink, DecimalPipe],
   templateUrl: './product-card.html',
   styleUrl: './product-card.scss',
 })

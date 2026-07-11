@@ -6,7 +6,10 @@
     <div class="product-info">
         <h3 class="product-title">{{product().title}}</h3>
         <div class="product-footer">
-            <span class="product-price">{{product().price}}</span>
+            <div class="product-pricing">
+                <span class="product-price">{{product().price | number: '1.1-1'}}</span>
+                <span class="product-price-percentage">{{product().discountPercentage | number: '1.1-1'}}% off</span>
+            </div>
             <button class="action-button" (click)="addToCart($event)">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                     stroke="currentColor" class="icon">

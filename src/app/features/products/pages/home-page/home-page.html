@@ -25,7 +25,7 @@
         <app-category-card></app-category-card>
     </section>
 
-    <section>
+    <section class="spacer-20">
         <h1 class="section-heading">Trending Products</h1>
         <div class="products-card-container">
             @for(product of trendingProducts; track product.id){
@@ -34,24 +34,27 @@
         </div>
     </section>
 
-    <section>
+    <section class="spacer-20">
         <h1 class="section-heading">Deals Of The Day</h1>
         <swiper-container space-between="20" loop="true" grab-cursor="true" speed="600" [navigation]="true"
             [pagination]="{ clickable: true }" [breakpoints]="{
-      '640': { 'slidesPerView': 1, 'spaceBetween': 0 },
+      '375': { 'slidesPerView': 2, 'spaceBetween': 12 },
       '1024': { 'slidesPerView': 4, 'spaceBetween': 30 }
     }">
             @for (slide of quickCards; track $index) {
             <swiper-slide>
-                <div class="slide-content">
-                    <img [src]="slide.img" style="border-radius: 20px;">
-                </div>
+                <a [href]="slide.url">
+                    <div class="slide-content">
+                        <img [src]="slide.img" style="border-radius: 20px;">
+                    </div>
+                </a>
+
             </swiper-slide>
             }
         </swiper-container>
     </section>
 
-    <section>
+    <section class="spacer-20">
         <h1 class="section-heading">Best Sellers</h1>
         <div class="products-card-container">
             @for(product of bestSeller; track product.id){

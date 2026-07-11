@@ -42,13 +42,13 @@ export class HomePage implements OnInit {
       ]
     }
   ];
-  
+
 
   quickCards = [
-    { img: "https://www.image2url.com/r2/default/images/1783438427777-05fca0a0-c04a-4197-83c3-99800c8a908f.webp" },
-    { img: "https://www.image2url.com/r2/default/images/1783438427800-56ff0704-9c17-4554-b515-9f875cb96871.webp" },
-    { img: "https://www.image2url.com/r2/default/images/1783438451154-c5381ed2-a7a2-4397-88b8-a36f93204234.webp" },
-    { img: "https://www.image2url.com/r2/default/images/1783438454572-8e1228b0-2b6b-4903-9c3d-d76b10c775c6.webp" },
+    { img: "https://www.image2url.com/r2/default/images/1783438427777-05fca0a0-c04a-4197-83c3-99800c8a908f.webp", url: 'products?categories=home-decoration' },
+    { img: "https://www.image2url.com/r2/default/images/1783438427800-56ff0704-9c17-4554-b515-9f875cb96871.webp", url: 'products?categories=laptops' },
+    { img: "https://www.image2url.com/r2/default/images/1783438451154-c5381ed2-a7a2-4397-88b8-a36f93204234.webp", url: 'products?categories=mobile-accessories' },
+    { img: "https://www.image2url.com/r2/default/images/1783438454572-8e1228b0-2b6b-4903-9c3d-d76b10c775c6.webp", url: 'products?categories=kitchen-accessories' },
 
   ];
 
@@ -60,7 +60,7 @@ export class HomePage implements OnInit {
   loadTrendingProducts() {
     this.productService.getProducts().subscribe({
       next: (response) => {
-        this.trendingProducts = response.products.splice(0, 8);
+        this.trendingProducts = response.products.splice(0, 6);
       }
     })
   }
@@ -68,7 +68,7 @@ export class HomePage implements OnInit {
   bestSellerProducts() {
     this.productService.getProducts().subscribe({
       next: (response) => {
-        this.bestSeller = response.products.splice(8, 8);
+        this.bestSeller = response.products.splice(8, 6);
       }
     })
   }
