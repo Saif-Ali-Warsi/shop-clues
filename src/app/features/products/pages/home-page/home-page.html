@@ -1,28 +1,28 @@
 <div class="view-port-limit">
     <section>
-        <swiper-container slides-per-view="1" navigation="true" pagination="true" loop="true" grab-cursor="true"
+        <swiper-container progress-bar="true" slides-per-view="1" pagination="true" [loop]="true" grab-cursor="true"
             speed="600" [navigation]="true" [pagination]="{ clickable: true }" [breakpoints]="{
       '640': { 'slidesPerView': 1, 'spaceBetween': 0 },
       '1024': { 'slidesPerView': 1, 'spaceBetween': 0 }
     }">
-            @for (slide of homeBanners; track $index) {
+            @for (banner of homeBanners; track $index) {
+            @for (desktopItem of banner.desktopImgUrl; track $index; let i = $index) {
             <swiper-slide>
                 <div class="slide-content">
-                    <img [src]="slide.img" alt="Product Slide"
-                        style="width: 100%; border-radius: 50px; display: block;">
+                    <picture class="banner-picture">
+                        <source media="(max-width: 768px)" [srcset]="banner.mobileImgUrl[i]?.img">
+
+                        <img [src]="desktopItem.img" class="banner-img" alt="Banner slide">
+                    </picture>
                 </div>
             </swiper-slide>
+            }
             }
         </swiper-container>
     </section>
 
     <section>
-        <h1 class="section-heading">Categories</h1>
-        <div class="category-card-container">
-            @for(category of categories; track category.slug){
-            <app-category-card [category]="category"></app-category-card>
-            }
-        </div>
+        <app-category-card></app-category-card>
     </section>
 
     <section>
@@ -36,9 +36,9 @@
 
     <section>
         <h1 class="section-heading">Deals Of The Day</h1>
-        <swiper-container slides-per-view="4" space-between="20" loop="true" grab-cursor="true" speed="600"
-            [navigation]="true" [pagination]="{ clickable: true }" [breakpoints]="{
-      '640': { 'slidesPerView': 2, 'spaceBetween': 20 },
+        <swiper-container space-between="20" loop="true" grab-cursor="true" speed="600" [navigation]="true"
+            [pagination]="{ clickable: true }" [breakpoints]="{
+      '640': { 'slidesPerView': 1, 'spaceBetween': 0 },
       '1024': { 'slidesPerView': 4, 'spaceBetween': 30 }
     }">
             @for (slide of quickCards; track $index) {

@@ -1,4 +1,24 @@
-<div class="category-card" [routerLink]="['/products']" [queryParams]="{categories: category().slug}">
-    <!-- <img [src]="category.image" [alt]="category().name"> -->
-    <h3>{{category().name}}</h3>
-</div>
+<section class="category-list-section">
+  <div class="container">
+    <div class="category-list-section__header">
+      <h2>Shop by Categories</h2>
+
+      <a [routerLink]="">Shop All</a>
+    </div>
+
+    <div class="category-list-section__grid">
+      @for (category of categories; track category.title) {
+      <div class="category-card">
+        <a [href]="category.url">
+          <div class="category-card__image">
+            <img [src]="category.image" [alt]="category.title" />
+          </div>
+
+          <h3>{{ category.title }}</h3>
+        </a>
+
+      </div>
+      }
+    </div>
+  </div>
+</section>
