@@ -20,11 +20,6 @@ const notification = inject(NotificationService);
           console.error('Bad Request');
           break;
 
-        case 401:
-          authService.logout();
-          console.error('Unauthorized');
-          break;
-
         case 403:
           console.error('Forbidden');
           break;

@@ -1,35 +1,54 @@
 <div class="checkout-split-layout">
   <div class="checkout-card">
-    <h3>Shipping Address</h3>
+    <h3>Delivery Address</h3>
     <form [formGroup]="addressForm" class="checkout-form-grid">
       <div class="form-field full-width">
         <label>Full Name</label>
         <input type="text" placeholder="John Doe" formControlName="fullName">
+        @if(fullName?.touched && fullName?.hasError('required')){
+        <p class="error-message">Name is required</p>
+        }
       </div>
 
       <div class="form-field full-width">
         <label>Phone Number</label>
         <input type="number" placeholder="Enter contact number" formControlName="phone">
+        @if(phone?.touched && phone?.hasError('required')){
+        <p class="error-message">Contact number is required</p>
+        }
       </div>
 
       <div class="form-field full-width">
         <label>Street Address</label>
-        <textarea placeholder="Flat, House no., Building, Company, Apartment" formControlName="address" rows="3"></textarea>
+        <textarea placeholder="Flat, House no., Building, Company, Apartment" formControlName="address"
+          rows="3"></textarea>
+        @if(address?.touched && address?.hasError('required')){
+        <p class="error-message">Address is required</p>
+        }
       </div>
 
       <div class="form-field">
         <label>Town / City</label>
         <input type="text" placeholder="City" formControlName="city">
+        @if(city?.touched && city?.hasError('required')){
+        <p class="error-message">City is required</p>
+        }
       </div>
 
       <div class="form-field">
         <label>State</label>
         <input type="text" placeholder="State" formControlName="state">
+        @if(state?.touched && state?.hasError('required')){
+        <p class="error-message">State is required</p>
+        }
       </div>
 
       <div class="form-field full-width">
         <label>Pincode / Postal Code</label>
         <input type="number" placeholder="6-digit pincode" formControlName="pincode">
+        @if(pincode?.touched && pincode?.hasError('required')){
+        <p class="error-message">Pincode is required</p>
+        }
       </div>
 
       <div class="form-field full-width action-row">
