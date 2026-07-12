@@ -38,7 +38,9 @@ export class Login {
       next: (response) => {
         localStorage.setItem('accessToken', response.accessToken);
 
-        localStorage.setItem('user', JSON.stringify(response))
+        localStorage.setItem('user', JSON.stringify(response));
+
+        localStorage.setItem('refreshToken', response.refreshToken);
 
         this.router.navigate(['/'])
 

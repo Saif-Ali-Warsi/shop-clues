@@ -26,16 +26,27 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('accessToken');
-    
-    localStorage.removeItem('user');
 
-    // this.cartService.clearCart();
+    localStorage.removeItem('refreshToken');
+
+    localStorage.removeItem('user');
 
     this.router.navigate(['/login']);
   }
 
   isLoggedIn() {
     return !!localStorage.getItem('accessToken')
+  }
+
+  refreshToken() {
+    return this.http.post<{
+      accessToken: string;
+      refreshToken: string;
+    }>(`${this.baseUrl}/auth/refresh`, 
+      {
+      refreshToken: localStorage.getItem('refreshToken'),
+      expiresInMins: 30
+    })
   }
 
 }
