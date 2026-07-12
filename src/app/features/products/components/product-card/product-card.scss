@@ -1,21 +1,11 @@
 :host {
-  --bg-grid: #0f172a;
-  --bg-card-hover: #334155;
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --accent-hover: #60a5fa;
-  --border-color: #334155;
-  --badge-bg: rgba(15, 23, 42, 0.6);
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
 }
 
 .product-card {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: var(--transition);
   display: flex;
   flex-direction: column;
   border: 1px solid #1a1a1ad1;
@@ -49,7 +39,7 @@
   position: absolute;
   top: 12px;
   left: 12px;
-  background: var(--badge-bg);
+  background: rgba(15, 23, 42, 0.6);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #12daa8;
@@ -118,7 +108,7 @@
 }
 
 .action-button {
-  background: var(--text-main);
+  background: #f8fafc;
   color: #12daa8;
   border: none;
   width: 40px;

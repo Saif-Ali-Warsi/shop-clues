@@ -23,6 +23,14 @@ export class Login {
     password: ['emilyspass', Validators.required],
   })
 
+  get username() {
+    return this.loginForm.get('username');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
+  }
+
 
   onSubmit() {
     if (this.loginForm.invalid) {

@@ -9,24 +9,20 @@
       <div class="form-field">
         <label for="username">Username</label>
         <div class="input-wrapper">
-          <input 
-            type="text" 
-            id="username"
-            formControlName="username" 
-            placeholder="e.g., emilys" 
-          />
+          <input type="text" id="username" formControlName="username" placeholder="e.g., emilys" />
+          @if(username?.touched && username?.hasError('required')){
+          <p class="error-message">User name is required</p>
+          }
         </div>
       </div>
 
       <div class="form-field">
         <label for="password">Password</label>
         <div class="input-wrapper">
-          <input 
-            type="password" 
-            id="password"
-            formControlName="password" 
-            placeholder="••••••••••••" 
-          />
+          <input type="password" id="password" formControlName="password" placeholder="••••••••••••" />
+          @if(password?.touched && password?.hasError('required')){
+          <p class="error-message">Password is required</p>
+          }
         </div>
       </div>
 

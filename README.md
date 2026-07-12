@@ -1,59 +1,172 @@
+<div align="center">
+
 # ShopClues
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.30.
+### Modern E-Commerce Application built with Angular 20
 
-## Development server
+A responsive and feature-rich e-commerce application demonstrating modern Angular development practices including Signals, standalone components, authentication, routing, reusable UI components, and responsive design.
 
-To start a local development server, run:
+<br>
 
-```bash
-ng serve
+<p>
+  <a href="https://saif-ali-warsi.github.io/shop-clues/#/home" target="_blank">
+    <img src="https://img.shields.io/badge/🌐_Live_Demo-Visit_Now-12daa8?style=for-the-badge" alt="Live Demo"/>
+  </a>
+
+  <a href="https://github.com/Saif-Ali-Warsi/shop-clues" target="_blank">
+    <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github" alt="GitHub Repository"/>
+  </a>
+</p>
+
+</div>
+
+---
+
+## ✨ Features
+
+<table>
+<tr>
+<td width="50%">
+
+### 🛍️ Shopping
+- Product Listing
+- Product Details
+- Category Filtering
+- Product Search
+- Sorting
+- Shopping Cart
+- Buy Now
+- Checkout Flow
+
+</td>
+
+<td width="50%">
+
+### ⚙️ Technical
+- Angular 20
+- Standalone Components
+- Signals
+- RxJS
+- Lazy Loading
+- Route Guards
+- HTTP Interceptors
+- Responsive UI
+
+</td>
+</tr>
+</table>
+
+---
+
+# Screenshots
+
+## Home Page
+
+<img src="https://www.image2url.com/r2/default/images/1783850081825-befe9976-73b0-4fd4-a46d-352146e63fa8.png" width="100%">
+
+---
+
+## Product Listing
+
+<img src="https://www.image2url.com/r2/default/images/1783850207093-a9af0b25-0bb8-4b2e-a988-bfcd16435cef.png" width="100%">
+
+---
+
+## Product Details
+
+<img src="https://www.image2url.com/r2/default/images/1783850269057-0f421ba5-ff19-4f4a-88fe-fffbc8b641d4.png" width="100%">
+
+---
+
+## Shopping Cart
+
+<img src="https://www.image2url.com/r2/default/images/1783850400151-7bbe783a-9bed-4d25-97ee-5da89f44c068.png" width="100%">
+
+---
+
+## Checkout
+
+<img src="https://www.image2url.com/r2/default/images/1783850554790-31c35bab-0ab4-4750-879a-4aa48d6c1140.png" width="100%">
+
+---
+
+# Tech Stack
+
+<p>
+
+<img src="https://skillicons.dev/icons?i=angular,ts,js,html,css,scss,git,github,vscode"/>
+
+</p>
+
+---
+
+# Project Structure
+
+```text
+src
+│
+├── core
+├── shared
+├── features
+│   ├── auth
+│   ├── cart
+│   ├── checkout
+│   ├── products
+│   └── profile
+│
+├── layouts
+├── models
+├── guards
+├── interceptors
+└── services
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+# Highlights
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+✅ Angular 20 Standalone Architecture
 
-```bash
-ng generate component component-name
-```
+✅ Responsive Design
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+✅ JWT Authentication
 
-```bash
-ng generate --help
-```
+✅ Route Guards
 
-## Building
+✅ HTTP Interceptors
 
-To build the project run:
+✅ Signals State Management
 
-```bash
-ng build
-```
+✅ RxJS
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+✅ Category Filtering
 
-## Running unit tests
+✅ Search with Query Params
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+✅ Product Detail Page
 
-```bash
-ng test
-```
+✅ Shopping Cart
 
-## Running end-to-end tests
+✅ Checkout Flow
 
-For end-to-end (e2e) testing, run:
+---
 
-```bash
-ng e2e
-```
+# Future Enhancements
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+- Wishlist
+- Order History
+- Payment Gateway
+- Product Reviews
+- Dark/Light Theme
+- Unit Testing
+- Refresh Token Authentication
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+<div align="center">
+
+### If you like this project, consider giving it a star!
+
+Made with ❤️ by Saif
+
+</div>
