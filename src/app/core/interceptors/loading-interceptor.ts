@@ -6,6 +6,10 @@ import { finalize } from 'rxjs';
 export const loadingInterceptor: HttpInterceptorFn = (req, next) => {
 
 
+  if (req.url.includes('/api/chat')) {
+    return next(req);
+  }
+
   const loadingService = inject(LoadingService);
 
   loadingService.show();

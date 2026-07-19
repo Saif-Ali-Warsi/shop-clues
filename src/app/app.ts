@@ -3,7 +3,8 @@ import { RouterOutlet } from '@angular/router';
 import { Navbar } from './shared/components/navbar/navbar';
 import { Footer } from './shared/components/footer/footer';
 import { LoadingSpinner } from './shared/components/loading-spinner/loading-spinner';
-import { NotificationService } from './shared/services/notification-service';
+import { AiChat } from './shared/components/ai-chat/ai-chat';
+
 
 @Component({
   selector: 'app-root',

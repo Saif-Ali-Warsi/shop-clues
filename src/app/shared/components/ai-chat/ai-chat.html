@@ -1,0 +1,40 @@
+<div class="ai-chat">
+
+    <div class="chat-header">
+        🤖 AI Shopping Assistant
+    </div>
+
+    <div class="chat-body">
+
+        @if (isLoading) {
+        <div class="bot-message loading">
+            AI is thinking...
+        </div>
+        } @else if (reply) {
+        <div class="bot-message">
+            <p> {{ reply }}</p>
+
+            @for(product of products; track product.id){
+            <p>
+                {{product.title}}
+                {{product.brand}}
+            </p>
+
+            }
+        </div>
+        }
+
+    </div>
+
+    <div class="chat-footer">
+
+        <input type="text" placeholder="Ask me anything..." [formControl]="messageControl"
+            (keydown.enter)="sendMessage()" />
+
+        <button>
+            Send
+        </button>
+
+    </div>
+
+</div>
