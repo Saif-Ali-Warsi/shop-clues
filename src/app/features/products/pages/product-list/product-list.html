@@ -22,19 +22,8 @@
     </div>
 
     <div class="product-grid">
-        @if(!isLoading){
-        <div class="loading-state">
-            <div class="spinner"></div>
-            <p>Loading products...</p>
-        </div>
-        } @else {
-        @for(product of products(); track product.id){
+       @for(product of products(); track product.id){
         <app-product-card [product]="product"></app-product-card>
-        } @empty {
-        <div class="empty-state">
-            <p>No products found</p>
-        </div>
-        }
         }
     </div>
 

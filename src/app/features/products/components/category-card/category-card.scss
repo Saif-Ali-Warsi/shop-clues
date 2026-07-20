@@ -1,3 +1,5 @@
+@use 'assets/color-variables.scss' as *;
+
 .category-list-section {
   padding: 20px;
 
@@ -5,7 +7,7 @@
     margin-bottom: 3rem;
 
     h2 {
-      color: #fff;
+      color: $white-color;
       font-size: 24px;
       font-weight: 700;
       margin: 0;
@@ -31,7 +33,7 @@
     width: 165px;
     height: 165px;
     border-radius: 50%;
-    background: #f4f4f4;
+    background: $white-bg-color;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,9 +50,8 @@
   }
 
   h3 {
-    font-family: 'Domine', serif;
     margin: 0;
-    color: #d8d8d8;
+    color: $lite-text-color;
     font-size: 1rem;
     font-weight: 500;
     line-height: 1.5;
@@ -60,7 +61,7 @@
   &:hover {
     .category-card__image {
       transform: translateY(-6px);
-      box-shadow: 0 0 12px #12daa8;
+      box-shadow: 0 0 12px $green;
 
       img {
         transform: scale(1.08);
@@ -68,7 +69,7 @@
     }
 
     h3 {
-      color: #12daa8;
+      color: $green;
     }
   }
 }

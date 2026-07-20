@@ -1,9 +1,10 @@
+@use 'assets/color-variables.scss' as *;
+
 .checkout-master-viewport {
   min-height: calc(100vh - 70px);
-  background-color: #121212;
-  color: #e0e0e0;
+  background-color: $dark-theme-color;
+  color: $white-color;
   padding: 40px 24px;
-  font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
 }
 
@@ -25,9 +26,9 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background-color: #1a1a1a;
-      border: 2px solid #333333;
-      color: #888888;
+      background-color: $dark-theme-color;
+      border: 2px solid $dark-theme-border;
+      color: $lite-text-color;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -39,7 +40,7 @@
     span {
       font-size: 12px;
       font-weight: 500;
-      color: #888888;
+      color: $lite-text-color;
       letter-spacing: 0.5px;
       text-transform: uppercase;
       transition: all 0.3s ease;
@@ -47,25 +48,25 @@
 
     &.active {
       .circle {
-        border-color: #12daa8;
-        color: #ffffff;
-        box-shadow: 0 0 15px rgba(244, 51, 151, 0.4);
-        background-color: #12daa8;
+        border-color: $green;
+        color: $white-color;
+        box-shadow: $box-shadow-6;
+        background-color: $green;
       }
       span {
-        color: #ffffff;
+        color: $white-color;
         font-weight: 600;
       }
     }
 
     &.complete {
       .circle {
-        border-color: #12daa8;
-        background-color: #12daa8;
-        color: #ffffff;
+        border-color: $green;
+        background-color: $box-shadow-6;
+        color: $white-color;
       }
       span {
-        color: #b0b0b0;
+        color: $lite-text-color;
       }
     }
   }
@@ -73,14 +74,14 @@
   .step-line {
     flex: 1;
     height: 2px;
-    background-color: #2d2d2d;
+    background-color: $bg-color-002;
     margin: 0 -10px;
     transform: translateY(-13px);
     z-index: 1;
     transition: background-color 0.4s ease;
 
     &.filled {
-      background-color: #12daa8;
+      background-color: $green;
     }
   }
 }
@@ -102,8 +103,8 @@
 }
 
 .checkout-card {
-  background-color: #1a1a1a;
-  border: 1px solid #2d2d2d;
+  background-color: $dark-theme-color;
+  border: 1px solid $dark-theme-border;
   border-radius: 16px;
   padding: 18px;
 
@@ -111,7 +112,7 @@
     margin: 0 0 24px 0;
     font-size: 18px;
     font-weight: 600;
-    color: #12daa8;
+    color: $green;
     letter-spacing: 0.5px;
   }
 }

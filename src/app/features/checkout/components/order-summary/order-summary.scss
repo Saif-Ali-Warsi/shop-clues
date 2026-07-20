@@ -1,3 +1,4 @@
+@use 'assets/color-variables.scss' as *;
 @use '../../pages/checkout/checkout.scss';
 @use '../address-form/address-form.scss';
 @use '../payment-method/payment-method.scss';
@@ -6,7 +7,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
-  border-bottom: 1px solid #2d2d2d;
+  border-bottom: 1px solid $dark-theme-border;
   padding-bottom: 24px;
   margin-bottom: 24px;
 
@@ -20,7 +21,7 @@
     margin: 0 0 12px 0;
     font-size: 12px;
     text-transform: uppercase;
-    color: #888888;
+    color: $lite-text-color;
     letter-spacing: 0.8px;
   }
 
@@ -28,10 +29,10 @@
     p {
       margin: 0 0 4px 0;
       font-size: 14px;
-      color: #b0b0b0;
+      color: $lite-text-color;
       
       &.name {
-        color: #ffffff;
+        color: $white-color;
         font-weight: 600;
         font-size: 15px;
       }
@@ -39,13 +40,13 @@
   }
 
   .method-tag {
-    background-color: #242424;
-    border: 1px solid #333333;
+    background-color: $dark-theme-color;
+    border: 1px solid $dark-theme-border;
     padding: 6px 14px;
     border-radius: 6px;
     font-size: 13px;
     font-weight: 700;
-    color: #ffffff;
+    color: $white-color;
     display: inline-block;
     letter-spacing: 0.5px;
   }
@@ -58,14 +59,14 @@
     margin: 0 0 16px 0;
     font-size: 12px;
     text-transform: uppercase;
-    color: #888888;
+    color: $lite-text-color;
     letter-spacing: 0.8px;
   }
 }
 
 .invoice-ledger {
-  background-color: #141414;
-  border: 1px solid #2d2d2d;
+  background-color: $dark-theme-color;
+  border: 1px solid $dark-theme-border;
   border-radius: 12px;
   padding: 20px;
   display: flex;
@@ -76,20 +77,20 @@
     display: flex;
     justify-content: space-between;
     font-size: 14px;
-    color: #b0b0b0;
+    color: $lite-text-color;
 
     .free-text {
-      color: #00c853;
+      color: $green;
       font-weight: 600;
     }
 
     &.total-row {
-      border-top: 1px solid #2d2d2d;
+      border-top: 1px solid $border-color-002;
       padding-top: 14px;
       margin-top: 4px;
       font-size: 18px;
       font-weight: 700;
-      color: #ffffff;
+      color: $white-color;
     }
   }
 }

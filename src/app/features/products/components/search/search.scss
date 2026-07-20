@@ -1,12 +1,13 @@
+@use 'assets/color-variables.scss' as *;
 
 input {
   font-size: 14px;
-  color: #12daa8;
+  color: $green;
   width: calc(100% - 20px);
   background-color: unset;
   height: 26px;
   padding: 8px 10px;
-  border: 1px solid #12daa8;
+  border: 1px solid $green;
   border-radius: 4px;
 }
 

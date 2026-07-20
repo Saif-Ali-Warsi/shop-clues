@@ -1,6 +1,8 @@
+@use 'assets/color-variables.scss' as *;
+
 .site-footer {
-  background-color: #121212;
-  color: #ffffff;
+  background-color: $dark-theme-color;
+  color: $white-color;
   padding: 60px 40px;
 }
 
@@ -31,7 +33,7 @@
 
 .logo-as-text {
   font-size: 24px;
-  color: #12daa8;
+  color: $green;
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
@@ -45,7 +47,7 @@
 }
 
 .social-icons a {
-  color: #ffffff;
+  color: $white-color;
   font-size: 18px;
   text-decoration: none;
   transition: opacity 0.2s;
@@ -57,7 +59,7 @@
 
 .copyright {
   font-size: 12px;
-  color: #999999;
+  color: $lite-text-color;
   line-height: 1.5;
   margin: 20px 0 20px;
 }
@@ -75,7 +77,7 @@
 }
 
 .links-sub-col a {
-  color: #ffffff;
+  color: $lite-text-color;
   text-decoration: none;
   font-size: 13px;
   font-weight: 600;
@@ -84,11 +86,11 @@
 }
 
 .links-sub-col a:hover {
-  color: #00e676;
+  color: $green;
 }
 
 .divider-left {
-  border-left: 1px solid #444444;
+  border-left: 1px solid $dark-theme-border;
   padding-left: 40px;
 }
 
@@ -109,7 +111,7 @@
 
   .divider-left {
     border-left: none;
-    border-top: 1px solid #444444;
+    border-top: 1px solid $dark-theme-border;
     padding-left: 0;
     padding-top: 40px;
   }

@@ -1,3 +1,5 @@
+@use 'assets/color-variables.scss' as *;
+
 .product-list-wrapper {
   display: flex;
   gap: 20px;
@@ -25,35 +27,18 @@
   align-items: center;
   justify-content: center;
   padding: 4rem 2rem;
-  color: #94a3b8;
+  color: $white-color;
   font-size: 1rem;
   grid-column: 1 / -1;
   list-style: none;
 }
 
-.spinner {
-  width: 40px;
-  height: 40px;
-  border: 3px solid #1e293b;
-  border-top: 3px solid #3b82f6;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 1rem;
-}
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 
 .sidebar-backdrop {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: $transparent-bg-1;
   backdrop-filter: blur(2px);
   z-index: 999;
 }
@@ -79,7 +64,7 @@
       width: max-content;
       background: none;
       font-size: 1rem;
-      color: #12daa8;
+      color: $green;
       border: none;
       padding: 12px;
       margin: 0;
@@ -95,14 +80,14 @@
     width: 280px;
     height: 96vh;
     overflow-y: auto;
-    background-color: rgb(26 26 26 / 90%);
+    background-color: $bg-color-005;
     border-top: none;
     padding: 20px 24px 24px 24px;
     flex-direction: column;
     align-items: flex-start;
     z-index: 1000;
     transition: left 0.3s ease-in-out;
-    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.5);
+    box-shadow: $box-shadow-1;
   }
 
   .sidebar-container.open {

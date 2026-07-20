@@ -1,25 +1,27 @@
+@use 'assets/color-variables.scss' as *;
+
 .filter-sidebar {
   display: flex;
   flex-direction: column;
-  color: #e0e0e0;
+  color: $white-color;
   box-sizing: border-box;
 }
 
 .sidebar-header {
-  border-bottom: 1px solid #2d2d2d;
+  border-bottom: 1px solid $dark-theme-border;
 
   h3 {
     margin: 0 0 10px;
     font-size: 18px;
     font-weight: 600;
     letter-spacing: 0.5px;
-    color: #ffffff;
+    color: $white-color;
   }
 }
 
 .filter-section {
   padding: 24px;
-  border-bottom: 1px solid #2d2d2d;
+  border-bottom: 1px solid $dark-theme-border;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -30,7 +32,7 @@
     text-transform: uppercase;
     letter-spacing: 1.2px;
     font-weight: 700;
-    color: #12daa8;
+    color: $green;
   }
 }
 
@@ -48,11 +50,11 @@
     background: transparent;
   }
   &::-webkit-scrollbar-thumb {
-    background: #333333;
+    background: $bg-color-001;
     border-radius: 10px;
   }
   &::-webkit-scrollbar-thumb:hover {
-    background: #444444;
+    background: $bg-color-001;
   }
 }
 
@@ -66,7 +68,7 @@
 
   label {
     font-size: 14px;
-    color: #ffffff;
+    color: $white-color;
     cursor: pointer;
     user-select: none;
     transition: color 0.2s ease;
@@ -76,13 +78,13 @@
   input[type='radio'],
   input[type='checkbox'] {
     appearance: none;
-    background-color: #242424;
+    background-color: $dark-theme-color;
     margin: 0;
     font: inherit;
-    color: #12daa8;
+    color: $green;
     width: 20px;
     height: 18px;
-    border: 2px solid #444444;
+    border: 2px solid $dark-theme-border;
     display: grid;
     place-content: center;
     cursor: pointer;
@@ -101,12 +103,12 @@
       border-radius: 50%;
       transform: scale(0);
       transition: 120ms transform ease-in-out;
-      background-color: #ffffff;
+      background-color: $white-bg-color;
     }
 
     &:checked {
-      border-color: #12daa8;
-      background-color: #12daa8;
+      border-color: $green;
+      background-color: $green;
 
       &::before {
         transform: scale(1);
@@ -123,13 +125,13 @@
       height: 7px;
       transform: scale(0);
       transition: 120ms transform ease-in-out;
-      background-color: #ffffff;
+      background-color: $white-bg-color;
       clip-path: polygon(14% 44%, 0 58%, 38% 95%, 100% 16%, 86% 2%, 38% 67%);
     }
 
     &:checked {
-      border-color: #12daa8;
-      background-color: #12daa8;
+      border-color: $green;
+      background-color: $green;
 
       &::before {
         transform: scale(1);
@@ -139,14 +141,14 @@
 
   &:hover {
     label {
-      color: #ffffff;
+      color: $white-color;
     }
     input[type='radio'],
     input[type='checkbox'] {
-      border-color: #666666;
+      border-color: $border-color-002;
     }
     input:checked {
-      border-color: #12daa8;
+      border-color: $green;
     }
   }
 }
@@ -167,9 +169,9 @@
     right: 10px;
     top: 10px;
     background: unset;
-    color: #ff3e31;
+    color: $danger;
     box-shadow: unset;
-    border: navajowhite;
+    border: $border-color-003;
     font-size: 24px;
   }
 }

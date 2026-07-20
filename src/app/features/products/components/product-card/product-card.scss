@@ -1,3 +1,5 @@
+@use 'assets/color-variables.scss' as *;
+
 :host {
   display: block;
 }
@@ -8,7 +10,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  border: 1px solid #1a1a1ad1;
+  border: 1px solid $dark-theme-border;
   border-radius: 10px;
 }
 
@@ -39,17 +41,17 @@
   position: absolute;
   top: 12px;
   left: 12px;
-  background: rgba(15, 23, 42, 0.6);
+  background: $transparent-bg-2;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  color: #12daa8;
+  color: $green;
   font-size: 0.72rem;
   font-weight: 600;
   padding: 4px 12px;
   border-radius: 20px;
   text-transform: capitalize;
   letter-spacing: 0.05em;
-  border: 1px solid #12daa8;
+  border: 1px solid $green;
 }
 
 .product-info {
@@ -70,7 +72,7 @@
 .product-title {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #fff;
+  color: $white-color;
   margin: 0 0 1rem 0;
   line-height: 1.4;
   display: -webkit-box;
@@ -90,12 +92,12 @@
 .product-price {
   font-size: 1rem;
   font-weight: 700;
-  color: #fff;
+  color: $white-color;
 }
 
 .product-price-percentage {
-  color: #fff;
-  background: #249f63;
+  color: $white-color;
+  background: $green;
   padding: 10px;
   font-size: 11px;
   border-radius: 50%;
@@ -108,8 +110,8 @@
 }
 
 .action-button {
-  background: #f8fafc;
-  color: #12daa8;
+  background: $white-bg-color;
+  color: $green;
   border: none;
   width: 40px;
   height: 40px;
@@ -123,10 +125,10 @@
 }
 
 .action-button:hover {
-  background: #12daa8;
-  color: #ffffff;
+  background: $green;
+  color: $white-color;
   transform: scale(1.05);
-  box-shadow: 0 0 12px #12daa8;
+  box-shadow: 0 0 12px $green;
 }
 
 .action-button:active {

@@ -1,6 +1,8 @@
+@use 'assets/color-variables.scss' as *;
+
 .total-quotation-panel {
-  background-color: #1a1a1a;
-  border: 1px solid #2d2d2d;
+  background-color: $dark-theme-color;
+  border: 1px solid $dark-theme-border;
   border-radius: 16px;
   padding: 24px;
   box-sizing: border-box;
@@ -10,7 +12,7 @@
     margin: 0 0 20px 0;
     font-size: 16px;
     font-weight: 600;
-    color: #ffffff;
+    color: $white-color;
     letter-spacing: 0.5px;
   }
 }
@@ -26,33 +28,33 @@
   justify-content: space-between;
   align-items: center;
   font-size: 14px;
-  color: #a0a0a0;
+  color: $lite-text-color;
 
   .val {
-    color: #ffffff;
+    color: $white-color;
     font-weight: 500;
   }
 
   .discount-text {
-    color: #12daa8;
+    color: $green;
     font-weight: 600;
   }
 
   &.final-total-row {
     font-size: 15px;
-    color: #ffffff;
+    color: $white-color;
     font-weight: 600;
 
     .price {
       font-size: 20px;
       font-weight: 700;
-      color: #12daa8;
+      color: $green;
     }
   }
 }
 
 .quote-divider {
   height: 1px;
-  background-color: #2d2d2d;
+  background-color: $dark-theme-color;
   margin: 20px 0;
 }

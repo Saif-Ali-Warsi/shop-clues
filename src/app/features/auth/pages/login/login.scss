@@ -1,6 +1,8 @@
+@use 'assets/color-variables.scss' as *;
+
 .login-page-container {
   min-height: calc(100vh - 250px);
-  background-color: #121212;
+  background-color: $dark-theme-color;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,13 +11,13 @@
 }
 
 .login-card {
-  background-color: #1a1a1a;
-  border: 1px solid #2d2d2d;
+  background-color: $dark-theme-color;
+  border: 1px solid $dark-theme-border;
   border-radius: 16px;
   width: 100%;
   max-width: 420px;
   padding: 20px 22px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  box-shadow: $box-shadow-1;
 }
 
 .login-header {
@@ -25,7 +27,7 @@
   .brand-logo {
     font-size: 28px;
     font-weight: 700;
-    color: #12daa8;
+    color: $green;
     margin-bottom: 16px;
     letter-spacing: -0.5px;
   }
@@ -34,13 +36,13 @@
     margin: 0 0 8px 0;
     font-size: 22px;
     font-weight: 600;
-    color: #12daa8;
+    color: $green;
   }
 
   p {
     margin: 0;
     font-size: 14px;
-    color: #888888;
+    color: $lite-text-color;
   }
 }
 
@@ -57,7 +59,7 @@
   label {
     font-size: 12px;
     font-weight: 600;
-    color: #ffffff;
+    color: $white-color;
     margin: 0 0 10px;
     text-transform: capitalize;
     letter-spacing: 0.8px;
@@ -69,24 +71,27 @@
 
   input {
     width: 100%;
-    background-color: #242424;
-    border: 1px solid #333333;
+    background-color: $dark-theme-color;
+    border: 1px solid $dark-theme-border;
     border-radius: 8px;
     padding: 14px 16px;
-    color: #ffffff;
+    color: $white-color;
     font-size: 15px;
     outline: none;
     box-sizing: border-box;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      background-color 0.2s ease;
 
     &::placeholder {
-      color: #555555;
+      color: $lite-text-color;
     }
 
     &:focus {
-      border-color: #12daa8;
-      background-color: #1c1c1c;
-      box-shadow: 0 0 0 3px rgba(244, 51, 151, 0.15);
+      border-color: $green;
+      background-color: $dark-theme-color;
+      box-shadow: $box-shadow-2;
     }
   }
 }
@@ -97,20 +102,23 @@
 
 .submit-btn {
   width: 100%;
-  background: linear-gradient(45deg, #12daa8, #12daa8);
-  color: #ffffff;
+  background: linear-gradient(45deg, $green, $green);
+  color: $white-color;
   border: none;
   border-radius: 8px;
   padding: 14px;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
-  box-shadow: 0 4px 12px rgba(244, 51, 151, 0.3);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+  box-shadow: $box-shadow-3;
 
   &:hover:not(:disabled) {
     transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(244, 51, 151, 0.45);
+    box-shadow: $box-shadow-3;
   }
 
   &:active:not(:disabled) {
@@ -118,8 +126,8 @@
   }
 
   &:disabled {
-    background: #2d2d2d;
-    color: #666666;
+    background: $dark-theme-color;
+    color: $lite-text-color;
     box-shadow: none;
     cursor: not-allowed;
     opacity: 0.7;
