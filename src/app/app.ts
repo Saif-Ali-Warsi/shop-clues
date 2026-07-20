@@ -8,7 +8,7 @@ import { AiChat } from './shared/components/ai-chat/ai-chat';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar, Footer, LoadingSpinner],
+  imports: [RouterOutlet, Navbar, Footer, LoadingSpinner, AiChat],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
