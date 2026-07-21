@@ -20,6 +20,13 @@
 
     <div class="chat-body bot-scrollable-group">
 
+          <div class="bot-loading">
+
+              <app-portal-loading></app-portal-loading>
+          </div>
+
+        <div style="display: none;">
+
         @if(showPredefinedTasks){
 
         <h2 class="help-msg">Looking for..</h2>
@@ -66,6 +73,8 @@
 
         </div>
         }
+
+        </div>
 
     </div>
 

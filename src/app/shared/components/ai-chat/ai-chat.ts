@@ -3,10 +3,11 @@ import { AiService } from '../../services/ai-service';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
+import { PortalLoading } from '../portal-loading/portal-loading';
 
 @Component({
   selector: 'app-ai-chat',
-  imports: [RouterLink, ReactiveFormsModule, DecimalPipe],
+  imports: [RouterLink, ReactiveFormsModule, DecimalPipe, PortalLoading],
   templateUrl: './ai-chat.html',
   styleUrl: './ai-chat.scss',
 })
