@@ -33,7 +33,6 @@
     width: 165px;
     height: 165px;
     border-radius: 50%;
-    background: $white-bg-color;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,8 +41,8 @@
     margin-bottom: 1.25rem;
 
     img {
-      max-width: 78%;
-      max-height: 78%;
+      max-width: 90%;
+      max-height: 95%;
       object-fit: contain;
       transition: 0.35s ease;
     }
@@ -61,7 +60,7 @@
   &:hover {
     .category-card__image {
       transform: translateY(-6px);
-      box-shadow: 0 0 12px $green;
+      box-shadow: 0 0 24px $green;
 
       img {
         transform: scale(1.08);

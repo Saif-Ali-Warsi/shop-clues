@@ -70,6 +70,30 @@
   color: $lite-text-color;
 }
 
+.support-panel {
+  display: flex;
+  align-items: self-start;
+  gap: 8px;
+  margin: 0 30px;
+
+  img {
+    width: 100%;
+    max-width: 30px;
+  }
+
+  h1 {
+    font-size: 14px;
+    color: #12daa8;
+    margin: 0 0 6px;
+  }
+
+  p {
+    font-size: 12px;
+    margin: 0;
+    opacity: 0.6;
+  }
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -200,6 +224,14 @@
     }
   }
 
+  .support-panel {
+    margin: 0 0;
+  }
+
+  .contact-details {
+    display: none;
+  }
+
   .nav-links {
     order: 2;
     gap: 14px;
@@ -217,9 +249,9 @@
     left: -1000px;
     width: 280px;
     height: 100vh;
-    background-color: $dark-theme-color;
+    background-color: rgba(26, 26, 26, 0.9);
     border-top: none;
-    padding: 30px 24px 24px 24px;
+    padding: 35px 24px 24px 24px;
     flex-direction: column;
     align-items: flex-start;
     z-index: 999;

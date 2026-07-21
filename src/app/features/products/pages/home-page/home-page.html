@@ -27,9 +27,9 @@
     </section>
 
     <section class="spacer-20">
-        <h1 class="section-heading">Trending Products</h1>
+        <h1 class="section-heading">Best Sellers</h1>
         <div class="products-card-container">
-            @for(product of trendingProducts; track product.id){
+            @for(product of bestSeller; track product.id){
             <app-product-card [product]="product"></app-product-card>
             }
         </div>
@@ -56,9 +56,9 @@
     </section>
 
     <section class="spacer-20">
-        <h1 class="section-heading">Best Sellers</h1>
+        <h1 class="section-heading">Trending Products</h1>
         <div class="products-card-container">
-            @for(product of bestSeller; track product.id){
+            @for(product of trendingProducts; track product.id){
             <app-product-card [product]="product"></app-product-card>
             }
         </div>

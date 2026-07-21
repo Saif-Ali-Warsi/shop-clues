@@ -11,6 +11,8 @@
 .sidebar-container {
   width: 250px;
   flex-shrink: 0;
+  height: 600px;
+    overflow-y: auto;
 }
 
 .product-grid {

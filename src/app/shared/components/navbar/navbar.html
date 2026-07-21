@@ -20,7 +20,17 @@
       </div>
     </div>
 
+
+
     <div class="nav-links">
+      <div class="support-panel">
+        <img src="images/call-icon.png" alt="call-icon">
+        <div class="contact-details">
+          <h1>Support</h1>
+          <p>404-555-9869</p>
+        </div>
+      </div>
+
       @if (!authService.isLoggedIn()) {
       <a routerLink="/login" class="nav-item" title="Login">
         <img src="https://www.image2url.com/r2/default/images/1783703739131-f40e3985-142f-43b7-b455-9f6ddf4bc66c.png"
@@ -46,7 +56,7 @@
     </div>
   </div>
 
-  <nav class="category-nav" [class.open]="isMenuOpen()">
+  <nav class="category-nav scrollable-group" [class.open]="isMenuOpen()">
     <div class="category-list" #categoryContainer>
       @if (showLeftButton()) {
       <button class="nav-btn left" (click)="scrollTabs('left')">

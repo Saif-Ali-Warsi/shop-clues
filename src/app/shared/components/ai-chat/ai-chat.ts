@@ -1,9 +1,11 @@
-import { Component, inject, OnInit, OnDestroy  } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { AiService } from '../../services/ai-service';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
 import { PortalLoading } from '../portal-loading/portal-loading';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-ai-chat',
@@ -11,15 +13,17 @@ import { PortalLoading } from '../portal-loading/portal-loading';
   templateUrl: './ai-chat.html',
   styleUrl: './ai-chat.scss',
 })
-export class AiChat implements OnInit, OnDestroy{
+export class AiChat implements OnInit, OnDestroy {
 
   private aiService = inject(AiService);
+  private router = inject(Router);
 
   messageControl = new FormControl<string | null>('');
 
   isLoading = false;
   botVisible = false;
   hasNoResults = false;
+  showBot = true;
 
   reply = '';
 
@@ -40,23 +44,41 @@ export class AiChat implements OnInit, OnDestroy{
   showPredefinedTasks = true;
 
   ngOnInit(): void {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+
+        const hiddenRoutes = [
+          '/checkout',
+          '/login',
+          '/register'
+        ];
+
+        this.showBot = !hiddenRoutes.some(route =>
+          this.router.url.startsWith(route)
+        );
+
+        if (!this.showBot) {
+          this.botVisible = false;
+        }
+      });
   }
 
   ngOnDestroy(): void {
-    
+    document.body.classList.remove('no-scroll');
   }
 
   showAiBot() {
     this.botVisible = !this.botVisible
-  if (this.botVisible) {
-    this.newSearch();
+    if (this.botVisible) {
+      this.newSearch();
 
-    if (window.innerWidth <= 576) {
-      document.body.classList.add('no-scroll');
+      if (window.innerWidth <= 576) {
+        document.body.classList.add('no-scroll');
+      }
+    } else {
+      document.body.classList.remove('no-scroll');
     }
-  } else {
-    document.body.classList.remove('no-scroll');
-  }
   }
 
   searchTask(task: string) {

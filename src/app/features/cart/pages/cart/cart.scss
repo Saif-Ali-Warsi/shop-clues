@@ -126,9 +126,6 @@
 
 .cart-summary-panel {
   width: 340px;
-  background-color: $dark-theme-border;
-  border: 1px solid $dark-theme-border;
-  border-radius: 8px;
   padding: 24px;
   color: $white-color;
   position: sticky;
@@ -209,6 +206,10 @@
 @media (max-width: 768px) {
   .cart-layout-wrapper {
     flex-direction: column;
+  }
+
+  .cart-container {
+    width: 100%;
   }
 
   .cart-summary-panel {

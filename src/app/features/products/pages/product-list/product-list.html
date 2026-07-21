@@ -15,7 +15,7 @@
     </div>
     }
 
-    <div class="sidebar-container" [class.open]="filterOpen()">
+    <div class="sidebar-container scrollable-group" [class.open]="filterOpen()">
         <app-filter-sidebar (sortChanged)="onSortChanged($event)" [checkedCategories]="selectedCategories()"
             (categoriesChanged)="onCategoriesChanged($event)" (filterClosed)="closeFilters()">
         </app-filter-sidebar>
