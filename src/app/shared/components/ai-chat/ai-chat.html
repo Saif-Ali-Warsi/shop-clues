@@ -11,8 +11,8 @@
   </div>
 </div>
 
-@if (botVisible) {
-<div class="ai-chat">
+
+<div class="ai-chat" [class.open]="botVisible">
   <div class="chat-header">Hi i am your shopping assistant..</div>
 
   <button class="close-btn-bot" (click)="showAiBot()">✕</button>
@@ -91,4 +91,3 @@
 </div>
 }
 
-}

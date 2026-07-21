@@ -50,10 +50,28 @@ body.no-scroll {
   bottom: 20px;
   right: 20px;
   box-shadow: 0 0 12px $green;
+    opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px) scale(0.95);
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    visibility 0.3s;
+
+  pointer-events: none;
 
   &:hover {
     box-shadow: 0 0 18px $green;
   }
+}
+
+.ai-chat.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+
+  pointer-events: auto;
 }
 
 .chat-header {
