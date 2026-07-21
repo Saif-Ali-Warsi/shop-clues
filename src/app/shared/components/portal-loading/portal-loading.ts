@@ -10,6 +10,14 @@ import {
   input
 } from '@angular/core';
 
+interface PortalParticle {
+  angle: number;
+  distance: number;
+  speed: number;
+  size: number;
+  opacity: number;
+}
+
 @Component({
   selector: 'app-portal-loading',
   imports: [],
@@ -17,11 +25,10 @@ import {
   styleUrl: './portal-loading.scss',
 })
 export class PortalLoading {
-  // Configurable inputs via Signals
-  size = input<number>(200); // Dimension in px
-  color = input<string>('#12daa8'); // Default accent color
+  size = input<number>(220);
+  color = input<string>('#12daa8');
 
-  private canvasRef = viewChild<ElementRef<HTMLCanvasElement>>('loaderCanvas');
+  private canvasRef = viewChild<ElementRef<HTMLCanvasElement>>('portalCanvas');
   private ngZone = inject(NgZone);
   private destroyRef = inject(DestroyRef);
   private animFrameId: number | null = null;
@@ -29,7 +36,7 @@ export class PortalLoading {
   constructor() {
     afterNextRender(() => {
       this.ngZone.runOutsideAngular(() => {
-        this.initLoader();
+        this.initPortal();
       });
     });
 
@@ -40,7 +47,7 @@ export class PortalLoading {
     });
   }
 
-  private initLoader(): void {
+  private initPortal(): void {
     const canvas = this.canvasRef()?.nativeElement;
     if (!canvas) return;
 
@@ -57,96 +64,84 @@ export class PortalLoading {
 
     const cx = canvas.width / 2;
     const cy = canvas.height / 2;
-    const baseRadius = (canvasSize * dpr) * 0.28;
+    const portalRadius = (canvasSize * dpr) * 0.32;
 
-    // Particle nodes on the outer ring
-    const particleCount = 12;
-    const particles = Array.from({ length: particleCount }, (_, i) => ({
-      angle: (i * (Math.PI * 2)) / particleCount,
-      speed: 0.02 + Math.random() * 0.01,
-      size: 3 * dpr,
-    }));
+    const particleCount = 45;
+    const particles: PortalParticle[] = [];
 
-    let angle1 = 0;
-    let angle2 = 0;
-    let pulseRadius = baseRadius;
-    let pulseOpacity = 1;
+    const createParticle = (): PortalParticle => ({
+      angle: Math.random() * Math.PI * 2,
+      distance: portalRadius + (Math.random() * 20 * dpr),
+      speed: (0.2 + Math.random() * 0.35) * dpr,
+      size: (0.8 + Math.random() * 1.2) * dpr,
+      opacity: 0.15 + Math.random() * 0.65,
+    });
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(createParticle());
+    }
+
+    let arcAngle = 0;
 
     const render = (time: number) => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // --- 1. Outer Pulsing Glow Wave ---
-      pulseRadius += 0.6 * dpr;
-      pulseOpacity -= 0.012;
-      if (pulseOpacity <= 0) {
-        pulseRadius = baseRadius;
-        pulseOpacity = 0.8;
-      }
-
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(cx, cy, pulseRadius, 0, Math.PI * 2);
-      ctx.strokeStyle = this.hexToRgba(this.color(), pulseOpacity * 0.35);
-      ctx.lineWidth = 2 * dpr;
-      ctx.stroke();
-      ctx.restore();
-
-      // --- 2. Inner Rotating Gradient Ring ---
-      angle1 += 0.03;
+      // --- 1. Soft Rotating Arc (No Sharp Borders) ---
+      arcAngle += 0.02;
       ctx.save();
       ctx.translate(cx, cy);
-      ctx.rotate(angle1);
+      ctx.rotate(arcAngle);
 
       ctx.beginPath();
-      ctx.arc(0, 0, baseRadius, 0, Math.PI * 1.4);
-      ctx.strokeStyle = this.createGradient(ctx, baseRadius, this.color());
-      ctx.lineWidth = 4 * dpr;
+      ctx.arc(0, 0, portalRadius, 0, Math.PI * 0.7);
+
+      // Soft fading ends on both sides of the arc
+      const grad = ctx.createLinearGradient(-portalRadius, 0, portalRadius, 0);
+      grad.addColorStop(0, this.hexToRgba(this.color(), 0));
+      grad.addColorStop(0.5, this.hexToRgba(this.color(), 0.35));
+      grad.addColorStop(1, this.hexToRgba(this.color(), 0));
+
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 1.5 * dpr; // Thinner, smoother stroke
       ctx.lineCap = 'round';
       ctx.shadowColor = this.color();
-      ctx.shadowBlur = 12 * dpr;
+      ctx.shadowBlur = 12 * dpr; // Soft blur feathering instead of crisp edge
       ctx.stroke();
       ctx.restore();
 
-      // --- 3. Counter-Rotating Inner Ring ---
-      angle2 -= 0.045;
-      ctx.save();
-      ctx.translate(cx, cy);
-      ctx.rotate(angle2);
+      // --- 2. Inward Swirling Dust Particles ---
+      particles.forEach((p, index) => {
+        p.distance -= p.speed;
+        p.angle += 0.008;
 
-      ctx.beginPath();
-      ctx.arc(0, 0, baseRadius * 0.72, 0, Math.PI * 0.9);
-      ctx.strokeStyle = this.color();
-      ctx.lineWidth = 2.5 * dpr;
-      ctx.lineCap = 'round';
-      ctx.shadowColor = this.color();
-      ctx.shadowBlur = 8 * dpr;
-      ctx.stroke();
-      ctx.restore();
+        const px = cx + Math.cos(p.angle) * p.distance;
+        const py = cy + Math.sin(p.angle) * p.distance;
 
-      // --- 4. Orbiting Particles ---
-      particles.forEach((p) => {
-        p.angle += p.speed;
-        const px = cx + Math.cos(p.angle) * (baseRadius + 8 * dpr);
-        const py = cy + Math.sin(p.angle) * (baseRadius + 8 * dpr);
+        const distanceRatio = p.distance / (portalRadius + 20 * dpr);
+        const currentOpacity = p.opacity * Math.max(0, distanceRatio);
 
         ctx.save();
         ctx.beginPath();
         ctx.arc(px, py, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = this.color();
+        ctx.fillStyle = this.hexToRgba(this.color(), currentOpacity);
         ctx.shadowColor = this.color();
-        ctx.shadowBlur = 10 * dpr;
+        ctx.shadowBlur = 5 * dpr;
         ctx.fill();
         ctx.restore();
+
+        if (p.distance <= 3 * dpr) {
+          particles[index] = createParticle();
+        }
       });
 
-      // --- 5. Center Core Glow ---
-      const corePulse = Math.sin(time * 0.004) * (2 * dpr) + (6 * dpr);
+      // --- 3. Subtle Core Point ---
+      const corePulse = Math.sin(time * 0.003) * (0.6 * dpr) + (2 * dpr);
       ctx.save();
       ctx.beginPath();
       ctx.arc(cx, cy, corePulse, 0, Math.PI * 2);
       ctx.fillStyle = this.color();
       ctx.shadowColor = this.color();
-      ctx.shadowBlur = 16 * dpr;
+      ctx.shadowBlur = 10 * dpr;
       ctx.fill();
       ctx.restore();
 
@@ -156,18 +151,10 @@ export class PortalLoading {
     this.animFrameId = requestAnimationFrame(render);
   }
 
-  private createGradient(ctx: CanvasRenderingContext2D, radius: number, hexColor: string): CanvasGradient {
-    const grad = ctx.createLinearGradient(-radius, -radius, radius, radius);
-    grad.addColorStop(0, this.hexToRgba(hexColor, 1));
-    grad.addColorStop(0.6, this.hexToRgba(hexColor, 0.4));
-    grad.addColorStop(1, this.hexToRgba(hexColor, 0));
-    return grad;
-  }
-
   private hexToRgba(hex: string, alpha: number): string {
     let cleanHex = hex.replace('#', '');
     if (cleanHex.length === 3) {
-      cleanHex = cleanHex.split('').map(c => c + c).join('');
+      cleanHex = cleanHex.split('').map((c) => c + c).join('');
     }
     const num = parseInt(cleanHex, 16);
     const r = (num >> 16) & 255;

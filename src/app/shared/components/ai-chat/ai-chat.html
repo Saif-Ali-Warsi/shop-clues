@@ -1,93 +1,87 @@
 <div class="bot-indicator" (click)="showAiBot()">
-    <div class="bot-container">
-        <img src="https://www.image2url.com/r2/default/images/1784570654853-e3e4ff51-93ec-4f7c-8284-1dda70fc524c.gif"
-            alt="wave-gif" class="wave-icon">
-        <div>
-            <img src="https://www.image2url.com/r2/default/images/1784570664145-45989277-c4be-42c2-b8dc-6fbe01c2f079.png"
-                alt="bot-icon" class="bot-icon">
-        </div>
+  <div class="bot-container">
+    <img
+      src="https://www.image2url.com/r2/default/images/1784570654853-e3e4ff51-93ec-4f7c-8284-1dda70fc524c.gif"
+      alt="wave-gif"
+      class="wave-icon"
+    />
+    <div>
+      <img
+        src="https://www.image2url.com/r2/default/images/1784570664145-45989277-c4be-42c2-b8dc-6fbe01c2f079.png"
+        alt="bot-icon"
+        class="bot-icon"
+      />
     </div>
+  </div>
 </div>
 
-@if(botVisible){
-<div class="ai-chat">
-
-    <div class="chat-header">
-        Hi i am your shopping assistant..
-    </div>
+@if (botVisible) {
+  <div class="ai-chat">
+    <div class="chat-header">Hi i am your shopping assistant..</div>
 
     <button class="close-btn-bot" (click)="showAiBot()">✕</button>
 
     <div class="chat-body bot-scrollable-group">
-
-          <div class="bot-loading">
-
-              <app-portal-loading></app-portal-loading>
-          </div>
-
-        <div style="display: none;">
-
-        @if(showPredefinedTasks){
-
+      @if (showPredefinedTasks) {
         <h2 class="help-msg">Looking for..</h2>
 
         <div class="bot-tasks">
-            @for(task of predefinedTasks; track task){
+          @for (task of predefinedTasks; track task) {
             <span (click)="searchTask(task)">
-                {{task}}
+              {{ task }}
             </span>
-            }
+          }
         </div>
+      }
 
-        }
-
-        @if (isLoading) {
+      @if (isLoading) {
         <div class="bot-loading">
-            <img src="https://cdn.dribbble.com/userupload/23977377/file/original-d43df31bd94dd8965a8119d953f904b7.gif"
-                class="bot-loading-img" alt="a-loading">
+          <app-portal-loading [size]="400"></app-portal-loading>
         </div>
-        } @else if (reply) {
+      } @else if (reply) {
         <div class="bot-message">
+          <p class="bot-reply-heading">{{ reply }}</p>
 
-            <p class="bot-reply-heading"> {{ reply }}</p>
-
-            <div class="product-grid">
-                @for(product of products; track product.id){
-                <div class="product-card" [routerLink]="['/products', product.id]" (click)="showAiBot()">
-                    <div class="image-container">
-                        <img [src]="product.thumbnail" [alt]="product.title">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">{{product.title}}</h3>
-                        <div class="product-footer">
-                            <div class="product-pricing">
-                                <span class="product-price">{{product.price | number: '1.1-1'}}</span>
-                                <span class="product-price-percentage">{{product.discountPercentage | number: '1.1-1'}}%
-                                    off</span>
-                            </div>
-                        </div>
-                    </div>
+          <div class="product-grid">
+            @for (product of products; track product.id) {
+              <div
+                class="product-card"
+                [routerLink]="['/products', product.id]"
+                (click)="showAiBot()"
+              >
+                <div class="image-container">
+                  <img [src]="product.thumbnail" [alt]="product.title" />
                 </div>
-                }
-            </div>
-
+                <div class="product-info">
+                  <h3 class="product-title">{{ product.title }}</h3>
+                  <div class="product-footer">
+                    <div class="product-pricing">
+                      <span class="product-price">{{ product.price | number: '1.1-1' }}</span>
+                      <span class="product-price-percentage"
+                        >{{ product.discountPercentage | number: '1.1-1' }}% off</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
         </div>
-        }
-
-        </div>
-
+      }
     </div>
 
     <div class="chat-footer">
+      <input
+        type="text"
+        placeholder="Show me Laptops.."
+        [formControl]="messageControl"
+        [disabled]="isLoading"
+        (keydown.enter)="sendMessage()"
+      />
 
-        <input type="text" placeholder="Show me Laptops.." [formControl]="messageControl" [disabled]="isLoading"
-            (keydown.enter)="sendMessage()">
-
-        <button (click)="sendMessage()" [disabled]="isLoading || !messageControl.value?.trim()">
-            Send
-        </button>
-
+      <button (click)="sendMessage()" [disabled]="isLoading || !messageControl.value?.trim()">
+        Send
+      </button>
     </div>
-
-</div>
+  </div>
 }
