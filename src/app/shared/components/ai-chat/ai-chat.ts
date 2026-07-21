@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy  } from '@angular/core';
 import { AiService } from '../../services/ai-service';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -11,7 +11,7 @@ import { PortalLoading } from '../portal-loading/portal-loading';
   templateUrl: './ai-chat.html',
   styleUrl: './ai-chat.scss',
 })
-export class AiChat implements OnInit {
+export class AiChat implements OnInit, OnDestroy{
 
   private aiService = inject(AiService);
 
@@ -19,16 +19,22 @@ export class AiChat implements OnInit {
 
   isLoading = false;
   botVisible = false;
+  hasNoResults = false;
 
   reply = '';
 
   products: any[] = [];
 
   predefinedTasks = [
+    'groceries',
     'gaming laptops',
     'smart phones',
+    'mobile-accessories',
     'beauty products',
-    'mobile accessories',
+    'sunglasses',
+    'skin-care',
+    'fragrances',
+    'home decoration',
   ];
 
   showPredefinedTasks = true;
@@ -36,9 +42,21 @@ export class AiChat implements OnInit {
   ngOnInit(): void {
   }
 
+  ngOnDestroy(): void {
+    
+  }
+
   showAiBot() {
     this.botVisible = !this.botVisible
-    this.newSearch()
+  if (this.botVisible) {
+    this.newSearch();
+
+    if (window.innerWidth <= 576) {
+      document.body.classList.add('no-scroll');
+    }
+  } else {
+    document.body.classList.remove('no-scroll');
+  }
   }
 
   searchTask(task: string) {
@@ -64,9 +82,12 @@ export class AiChat implements OnInit {
 
         this.products = response.products;
 
+        this.hasNoResults = this.products.length === 0;
+
         this.messageControl.reset();
 
         this.isLoading = false;
+
       },
       error: (error) => {
         console.error(error);
@@ -78,18 +99,16 @@ export class AiChat implements OnInit {
     });
   }
 
-newSearch() {
+  newSearch() {
 
-  this.reply = '';
+    this.reply = '';
+    this.products = [];
+    this.hasNoResults = false;
+    this.messageControl.reset();
+    this.showPredefinedTasks = true;
+  }
 
-  this.products = [];
 
-  this.messageControl.reset();
-
-  this.showPredefinedTasks = true;
-
-  this.isLoading = false;
-}
 
 
 }
