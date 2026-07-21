@@ -1,6 +1,6 @@
-@if(showBot){
+@if(showBot && showBotIndicator){
 
-<div class="bot-indicator" (click)="showAiBot()">
+<div class="bot-indicator" (click)="showAiBot()"   [class.show]="showBotIndicator">
   <div class="bot-container">
     <img src="https://www.image2url.com/r2/default/images/1784570654853-e3e4ff51-93ec-4f7c-8284-1dda70fc524c.gif"
       alt="wave-gif" class="wave-icon" />
@@ -10,7 +10,7 @@
     </div>
   </div>
 </div>
-
+}
 
 <div class="ai-chat" [class.open]="botVisible">
   <div class="chat-header">Hi i am your shopping assistant..</div>
@@ -89,5 +89,5 @@
     </button>
   </div>
 </div>
-}
+
 

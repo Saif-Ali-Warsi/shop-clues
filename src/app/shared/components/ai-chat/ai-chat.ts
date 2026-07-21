@@ -20,6 +20,7 @@ export class AiChat implements OnInit, OnDestroy {
 
   messageControl = new FormControl<string | null>('');
 
+  showBotIndicator = false;
   isLoading = false;
   botVisible = false;
   hasNoResults = false;
@@ -44,6 +45,11 @@ export class AiChat implements OnInit, OnDestroy {
   showPredefinedTasks = true;
 
   ngOnInit(): void {
+
+      setTimeout(() => {
+    this.showBotIndicator = true;
+  }, 5000);
+
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
