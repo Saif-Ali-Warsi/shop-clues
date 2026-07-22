@@ -17,7 +17,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 18px 24px;
-  max-width: 1400px;
+  max-width: 1650px;
   margin: 0 auto;
   flex-wrap: wrap;
 }
@@ -83,7 +83,7 @@
 
   h1 {
     font-size: 14px;
-    color: #12daa8;
+    color: $green;
     margin: 0 0 6px;
   }
 
@@ -140,8 +140,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  border-top: 1px solid $dark-theme-border;
-  max-width: 1400px;
+  max-width: 1650px;
   margin: 0 auto;
   padding: 0 24px;
 }
