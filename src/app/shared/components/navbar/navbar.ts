@@ -6,6 +6,8 @@ import { ProductService } from '../../../features/products/services/product-serv
 import { Category } from '../../../features/products/models/category.model';
 import { Search } from '../../../features/products/components/search/search';
 import { NotificationService } from '../../services/notification-service';
+import { NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -25,7 +27,10 @@ export class Navbar implements OnInit {
 
   showLeftButton = signal(false);
   showRightButton = signal(true);
-  isMenuOpen = signal(false); // Manages sidebar state
+  isMenuOpen = signal(false);
+
+  showNavigation = true;
+
 
   cartCount = this.cartService.cartCount;
   categories: Category[] = [];
@@ -36,6 +41,23 @@ export class Navbar implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.search = params['search'] ?? '';
     });
+
+
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+
+        const hiddenRoutes = [
+          '/checkout',
+          '/order-success'
+        ];
+
+        this.showNavigation = !hiddenRoutes.some(route =>
+          this.router.url.startsWith(route)
+        );
+
+
+      });
   }
 
   toggleMenu() {

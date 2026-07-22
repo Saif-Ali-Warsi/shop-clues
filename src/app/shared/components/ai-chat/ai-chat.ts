@@ -46,9 +46,9 @@ export class AiChat implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-      setTimeout(() => {
-    this.showBotIndicator = true;
-  }, 5000);
+    setTimeout(() => {
+      this.showBotIndicator = true;
+    }, 5000);
 
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
@@ -57,7 +57,8 @@ export class AiChat implements OnInit, OnDestroy {
         const hiddenRoutes = [
           '/checkout',
           '/login',
-          '/register'
+          '/register',
+          '/order-success'
         ];
 
         this.showBot = !hiddenRoutes.some(route =>
