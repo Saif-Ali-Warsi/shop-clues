@@ -36,8 +36,9 @@ $ai-bot-box-shadow-color: rgba(0, 0, 0, 0.15);
 }
 
 .bot-indicator.show {
-  animation: botPopIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
-  botPulse 2s ease-in-out 1s infinite;
+  animation:
+    botPopIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+    botPulse 2s ease-in-out 1s infinite;
 }
 
 @keyframes botPopIn {
@@ -62,7 +63,8 @@ $ai-bot-box-shadow-color: rgba(0, 0, 0, 0.15);
 }
 
 @keyframes botPulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
 
@@ -79,7 +81,7 @@ body.no-scroll {
 .ai-chat {
   width: 360px;
   height: 455px;
-  background: $ai-bot-bg-color-1;
+  background: rgb(0 0 0 / 93%);;
   color: $ai-bot-text-color;
   border-radius: 12px;
   display: flex;
@@ -125,12 +127,13 @@ body.no-scroll {
   display: flex;
   position: absolute;
   right: 8px;
-  top: 2px;
+  top: 9px;
   background: unset;
   color: $danger;
   box-shadow: unset;
-  border: $border-color-003;
-  font-size: 20px;
+  font-size: 14px;
+  border: 1px solid $danger;
+  border-radius: 24px;
 }
 
 .chat-body {
